@@ -15,8 +15,11 @@ public class GameManager : MonoBehaviour
     public StringsRandomData charges;
     public StringsRandomData schedules;
     public StringsRandomData timesOfCrime;
-    // public StringsRandomData scheduleTime;
-    // public ImageRandomData items; 
+    public StringsRandomData scheduleTime;
+    public ImageRandomData hairData;
+    public ImageRandomData eyeData;
+    public ImageRandomData mouthData;
+    public ImageRandomData items; 
     
     [Header("UI")]
     public GameObject[] cases;
@@ -42,10 +45,16 @@ public class GameManager : MonoBehaviour
             .Select(i => new DefendantRecord
             {
                 color = new Color(Random.value, Random.value, Random.value, 1.0f),
-                isGuilty = Random.value > 0.5f // random bool
-                // charge = ...
-                // schedule = ...
-                // items = ...
+                isGuilty = Random.value > 0.5f, // random bool
+                charge = charges.strings[((int)(Random.value * 100)) % charges.strings.Count],// charge
+                timeOfCrime = timesOfCrime.strings[(int)(Random.value * 100) % timesOfCrime.strings.Count],
+                //weapon = items.images[(int)(Random.value * 100) % items.images.Count]
+                
+                //schedule = ...
+
+                //items = ...
+
+                //face = ...
             })
             .ToList();
 
