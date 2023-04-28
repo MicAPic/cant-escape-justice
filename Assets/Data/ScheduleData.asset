@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a680481e97e1f54f87419b04bf97c46, type: 3}
   m_Name: ScheduleData
   m_EditorClassIdentifier: 
-  charges_: []
+  strings:
+  - Visited granny
+  - Yoga
+  - Pilates
+  - Watched GMTK's

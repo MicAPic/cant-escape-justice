@@ -10,7 +10,13 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
+    
+    [Header("Generator")]
+    public StringsRandomData charges;
+    public StringsRandomData schedule;
+    public StringsRandomData scheduleTime;
+    public ImageRandomData items; 
+    
     [Header("UI")] 
     public TMP_Text caseCounter;
     [SerializeField] 

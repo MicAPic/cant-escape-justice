@@ -2032,6 +2032,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f3b517a46ab43859e5306d88bf23e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charges: {fileID: 11400000, guid: 47e086473a32dd34589882d02bcda9e0, type: 2}
+  schedule: {fileID: 0}
+  scheduleTime: {fileID: 0}
+  items: {fileID: 0}
   caseCounter: {fileID: 1692437508}
   swipeableView: {fileID: 676153524}
 --- !u!4 &1850288516

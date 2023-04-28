@@ -12,4 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a680481e97e1f54f87419b04bf97c46, type: 3}
   m_Name: TimeOfCrimeData
   m_EditorClassIdentifier: 
-  charges_: []
+  strings:
+  - 8:15
+  - 9:55
+  - 10:20
+  - 11:47
+  - 12:33
+  - 13:15
+  - 14:22
+  - 15:03
+  - 16:20
+  - 17:34
+  - 18:17
+  - 19:52
+  - 20:10
+  - 21:22
+  - 22:48
+  - 23:55
