@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ScheduleTimeData
   m_EditorClassIdentifier: 
   strings:
-  - 8:00-14:00 14:00-19:00 19:00-00:00
+  - 8:00--14:00 14:00--19:00 19:00--00:00

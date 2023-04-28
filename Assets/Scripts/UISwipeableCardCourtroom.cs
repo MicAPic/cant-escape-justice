@@ -37,11 +37,6 @@ namespace SwipeableView
             imgNope.alpha = rate;
             imgLike.alpha = 0;
         }
-
-        private void CheckSwipe()
-        {
-            
-        }
     }    
 }
 

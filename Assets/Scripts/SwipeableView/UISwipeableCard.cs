@@ -155,8 +155,10 @@ namespace SwipeableView
                 return;
             }
             
-            // update defendant's record 
-            GameManager.Instance.caseCounter.text = $"#{DataIndex + 2}";
+            // update hidden defendant's record 
+            GameManager.Instance.caseCounters[1].text = $"#{DataIndex + 2}";
+            // show it
+            GameManager.Instance.SwitchCases();
         }
 
         public void AutoSwipeRight(Vector3 from)
