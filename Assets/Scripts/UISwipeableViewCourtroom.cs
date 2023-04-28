@@ -6,12 +6,7 @@ namespace SwipeableView
     {
         public void UpdateData(List<DefendantRecord> data)
         {
-            base.Initialize(data);
-        }
-
-        public void MoveToFrontNextCard()
-        {
-            
+            Initialize(data);
         }
     }
 }

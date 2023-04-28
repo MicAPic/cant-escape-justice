@@ -18,12 +18,14 @@ namespace SwipeableView
 
         public override void UpdateContent(DefendantRecord data)
         {
+            isGuilty = data.isGuilty;
+            
             bg.color = data.color;
             
             imgLike.alpha = 0;
             imgNope.alpha = 0;
         }
-        
+
         protected override void SwipingRight(float rate)
         {
             imgLike.alpha = rate;
@@ -34,6 +36,11 @@ namespace SwipeableView
         {
             imgNope.alpha = rate;
             imgLike.alpha = 0;
+        }
+
+        private void CheckSwipe()
+        {
+            
         }
     }    
 }
