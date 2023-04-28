@@ -33,6 +33,12 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+
+        var dialogueManager = FindObjectOfType<DialogueManager>();
+        if (dialogueManager)
+        {
+            dialogueManager.StartDialogue();    
+        }
     }
 
     // Start is called before the first frame update
