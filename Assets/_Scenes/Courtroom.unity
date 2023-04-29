@@ -941,14 +941,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f3b517a46ab43859e5306d88bf23e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  epsilon: 0.7
   charges: {fileID: 11400000, guid: 47e086473a32dd34589882d02bcda9e0, type: 2}
   schedules: {fileID: 11400000, guid: ded2bc5e0b0c8044f89fb85e47a74ba5, type: 2}
   timesOfCrime: {fileID: 11400000, guid: b39436933fb25574da93314f3b2307b1, type: 2}
-  scheduleTime: {fileID: 11400000, guid: 6aeb1eb299e43a645ab4ba62d16e8029, type: 2}
+  bodyData: {fileID: 11400000, guid: eaeb4408894e34078bed1cfd1e2912d3, type: 2}
   hairData: {fileID: 11400000, guid: 95ec000a3762ee548ae86426eb92394e, type: 2}
   eyeData: {fileID: 11400000, guid: 1d1fe131da3b44649a2846c376c14203, type: 2}
   mouthData: {fileID: 11400000, guid: 12ba7820cbec0df448c2dc6dfdd7adb2, type: 2}
-  items: {fileID: 11400000, guid: 2cc16d9b4b3b76f40b03e6344f1c8469, type: 2}
+  allFeatures: []
+  itemData: {fileID: 11400000, guid: 2cc16d9b4b3b76f40b03e6344f1c8469, type: 2}
   raycastBlock: {fileID: 1345120138}
   cases:
   - {fileID: 1152745587}
@@ -1161,10 +1163,6 @@ PrefabInstance:
     - target: {fileID: 7710171330869806785, guid: e9dc17140a28f4656bd45669bff8efe7, type: 3}
       propertyPath: m_Name
       value: Defendant's Case BG_A
-      objectReference: {fileID: 0}
-    - target: {fileID: 7710171330869806785, guid: e9dc17140a28f4656bd45669bff8efe7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7710171330869806790, guid: e9dc17140a28f4656bd45669bff8efe7, type: 3}
       propertyPath: m_Pivot.x

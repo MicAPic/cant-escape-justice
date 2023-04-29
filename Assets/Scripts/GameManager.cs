@@ -7,22 +7,28 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using System.Text;
+using TMPro.SpriteAssetUtilities;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    
-    [Header("Game Rules")]
 
+    [Header("Game Rules")]
+    //
+    
     [Header("Generator")]
+    public float epsilon = 0.7f;
     public StringsRandomData charges;
     public StringsRandomData schedules;
     public StringsRandomData timesOfCrime;
-    public StringsRandomData scheduleTime;
+    
+    public ImageRandomData bodyData;
     public ImageRandomData hairData;
     public ImageRandomData eyeData;
     public ImageRandomData mouthData;
-    public ImageRandomData items; 
+    public List<Sprite> allFeatures;
+
+    public ImageRandomData itemData; 
     
     [Header("UI")]
     public CanvasGroup raycastBlock;
@@ -51,10 +57,14 @@ public class GameManager : MonoBehaviour
         {
             _dialogueManager.StartDialogue();    
         }
-    }
 
+        allFeatures = hairData.images.Concat(eyeData.images.Concat(mouthData.images)).ToList();
+    }
+    
     private bool curGuilty;
     private string curTimeOfCrime;
+    private List<string> curFeatures = new();
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +75,7 @@ public class GameManager : MonoBehaviour
             data = Enumerable.Range(0, 1000)
                 .Select(i => new DefendantRecord
                 {
-                    color = i % 2 == 0 ? _dialogueManager.gavelColor : _dialogueManager.defendantColor,
+                    // color = i % 2 == 0 ? _dialogueManager.gavelColor : _dialogueManager.defendantColor,
                     isGuilty = false,
                     charge = string.Empty,
                     timeOfCrime = string.Empty,
@@ -79,33 +89,44 @@ public class GameManager : MonoBehaviour
                 })
                 .ToList();
 
-            data[1].color = _dialogueManager.courtroomColor;
-            data[0].color = _dialogueManager.defendantColor;
+            // data[1].color = _dialogueManager.courtroomColor;
+            // data[0].color = _dialogueManager.defendantColor;
         }
         else
         {
             data = Enumerable.Range(0, 1000)
-                .Select(i => new DefendantRecord
+                .Select(_ => new DefendantRecord
                 {
-                    color = new Color(Random.value, Random.value, Random.value, 1.0f),
-                    isGuilty = GenerateGuilty(), // random bool
+                    potato = bodyData.images[Random.Range(0, bodyData.images.Count)],
+                    eyes = GenerateFeature(eyeData),
+                    mouth = GenerateFeature(mouthData),
+                    // hair = GenerateFeature(hairData),
+                    
+                    isGuilty = GenerateGuilt(),
                     charge = GenerateCharge(),
                     timeOfCrime = GenerateTimeOfCrime(),
                     //weapon = items.images[(int)(Random.value * 100) % items.images.Count]
+                    feature = GenerateIncriminatingFeature(),
 
                     schedule = GenerateSchedule(curGuilty, curTimeOfCrime)
 
                     //items = ...
-
-                    //face = ...
                 })
                 .ToList();
         }
 
         swipeableView.UpdateData(data);
     }
-    private bool GenerateGuilty()
+    
+    private Sprite GenerateFeature(ImageRandomData featureData)
     {
+        var feature = featureData.images[Random.Range(0, featureData.images.Count)]; 
+        curFeatures.Add(feature.name);
+        return feature;
+    }
+    private bool GenerateGuilt()
+    {
+        // random bool:
         curGuilty = Random.value > 0.5f;
         return curGuilty;
     }
@@ -114,10 +135,17 @@ public class GameManager : MonoBehaviour
         curTimeOfCrime = timesOfCrime.strings[(int)(Random.value * 100) % timesOfCrime.strings.Count];
         return curTimeOfCrime;
     }
-
     private string GenerateCharge()
     {
-        return charges.strings[((int)(Random.value * 100)) % charges.strings.Count];
+        return charges.strings[(int)(Random.value * 100) % charges.strings.Count];
+    }
+    private string GenerateIncriminatingFeature()
+    {
+        var probability = curGuilty ? 1.0f : Random.value;
+
+        return probability > epsilon ? 
+            curFeatures[Random.Range(0, curFeatures.Count)] : 
+            allFeatures[Random.Range(0, allFeatures.Count)].name;
     }
     
     private string GenerateSchedule(bool isGuilty, string timeOfCrime)

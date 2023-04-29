@@ -2081,6 +2081,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1142082096}
     m_Modifications:
     - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
+      propertyPath: gameTime
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
       propertyPath: stopTimer
       value: 1
       objectReference: {fileID: 0}
@@ -2339,11 +2343,11 @@ MonoBehaviour:
   charges: {fileID: 11400000, guid: 47e086473a32dd34589882d02bcda9e0, type: 2}
   schedules: {fileID: 11400000, guid: ded2bc5e0b0c8044f89fb85e47a74ba5, type: 2}
   timesOfCrime: {fileID: 11400000, guid: b39436933fb25574da93314f3b2307b1, type: 2}
-  scheduleTime: {fileID: 0}
+  bodyData: {fileID: 0}
   hairData: {fileID: 0}
   eyeData: {fileID: 0}
   mouthData: {fileID: 0}
-  items: {fileID: 0}
+  itemData: {fileID: 0}
   raycastBlock: {fileID: 1532197754}
   cases:
   - {fileID: 1152745587}

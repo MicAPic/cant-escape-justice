@@ -178,9 +178,13 @@ namespace SwipeableView
                 GameManager.Instance.caseCounters[1].text = $"#{DataIndex + 2}";
                 
                 var nextCase = _swipeableView._data[DataIndex + 1];
-                StringBuilder description = new StringBuilder(100);
+                
+                var description = new StringBuilder(100);
                 description.Append("Defendant is accused of ");
-                description.Append($"{nextCase.charge} at <color=#000>{nextCase.timeOfCrime}</color> using <color=#000>carrot.png</color>.");
+                description.Append($"{nextCase.charge} at <color=#000>{nextCase.timeOfCrime}</color> " +
+                                   $"using <color=#000>carrot.png</color>.\n \n");
+                description.Append($"Distinguishing features: <sprite name=\"{nextCase.feature}\">");
+                    
                 GameManager.Instance.caseDescriptions[1].text = description.ToString();
                 GameManager.Instance.caseSchedules[1].text = nextCase.schedule;
                 

@@ -8,7 +8,11 @@ namespace SwipeableView
     public class UISwipeableCardCourtroom : UISwipeableCard<DefendantRecord>
     {
         [SerializeField] 
-        private Image bg;
+        private Image body;
+        [SerializeField] 
+        private Image eyes;
+        [SerializeField] 
+        private Image mouth;
         
         [SerializeField]
         private CanvasGroup imgLike;
@@ -18,7 +22,10 @@ namespace SwipeableView
 
         public override void UpdateContent(DefendantRecord data)
         {
-            bg.color = data.color;
+            // bg.color = data.color;
+            body.sprite = data.potato;
+            eyes.sprite = data.eyes;
+            mouth.sprite = data.mouth;
             
             imgLike.alpha = 0;
             imgNope.alpha = 0;
