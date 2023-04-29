@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58732bb962fb4fb0b27e12ddfc921a2, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
-  id: 0
+  id: Default
   typingAudioClips:
   - {fileID: 8300000, guid: 6fab3fae96e614871b07f3b091d3ea8a, type: 3}
-  - {fileID: 8300000, guid: 9a3da89aa941e4970bd0c87d730ce687, type: 3}
-  - {fileID: 8300000, guid: fbf7f7e8f226449bca8a857f35b13f50, type: 3}
-  - {fileID: 8300000, guid: 0f64086ad9f88497dbd99e277803a25d, type: 3}
-  - {fileID: 8300000, guid: 2ee0f5f4a6f1e4f438bd37613acafa07, type: 3}
-  - {fileID: 8300000, guid: 0fc1df50757164146987621995d422c3, type: 3}
-  minPitch: 0.5
-  maxPitch: 0.5
+  minPitch: 1
+  maxPitch: 1

@@ -7,11 +7,6 @@ namespace SwipeableView
 {
     public class UISwipeableCard<TData, TContext> : MonoBehaviour, ISwipeable where TContext : class
     {
-        public bool isGuilty;
-        public string charge;
-        public string schedule;
-        public string timeOfCrime;
-
         [SerializeField] SwipeableViewData _viewData = default;
 
         /// <summary>
@@ -34,10 +29,17 @@ namespace SwipeableView
 
         private const float _epsion = 1.192093E-07f;
 
+        private UISwipeableViewCourtroom _swipeableView;
+
         void OnEnable()
         {
             cachedRect = transform as RectTransform;
             _screenSize = Screen.height > Screen.width ? Screen.width : Screen.height;
+        }
+
+        void Start()
+        {
+            _swipeableView = FindObjectOfType<UISwipeableViewCourtroom>();
         }
 
         void Update()
@@ -142,6 +144,7 @@ namespace SwipeableView
         public void EndSwipe()
         {
             var dialogueManager = FindObjectOfType<DialogueManager>();
+            var isGuilty = _swipeableView._data[DataIndex].isGuilty;
             
             // over required distance -> Auto swipe
             if (IsSwipedRight(cachedRect.localPosition))
@@ -174,7 +177,7 @@ namespace SwipeableView
                 // update the next defendant's record 
                 GameManager.Instance.caseCounters[1].text = $"#{DataIndex + 2}";
                 
-                var nextCase = FindObjectOfType<UISwipeableViewCourtroom>()._data[DataIndex + 1];
+                var nextCase = _swipeableView._data[DataIndex + 1];
                 StringBuilder description = new StringBuilder(100);
                 description.Append("Defendant is accused of ");
                 description.Append($"{nextCase.charge} at <color=#000>{nextCase.timeOfCrime}</color> using <color=#000>carrot.png</color>.");

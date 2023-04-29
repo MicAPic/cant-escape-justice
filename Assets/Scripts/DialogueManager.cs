@@ -32,8 +32,11 @@ public class DialogueManager : MonoBehaviour
     private TextAsset inkScript;
     private Story _story;
     private const string SpeakerTag = "speaker";
+    private const string EffectTag = "sfx";
 
     [Header("Audio")] 
+    [SerializeField] 
+    private DialogueAudioInfo effectsAudioInfo;
     [SerializeField] 
     private DialogueAudioInfo defaultAudioInfo;
     [SerializeField] 
@@ -62,7 +65,7 @@ public class DialogueManager : MonoBehaviour
     
     void Awake() 
     {
-        _audioSource = gameObject.AddComponent<AudioSource>();
+        _audioSource = gameObject.GetComponent<AudioSource>();
         InitializeAudioInfoDictionary();
         _currentAudioInfo = defaultAudioInfo;
     }
@@ -147,7 +150,7 @@ public class DialogueManager : MonoBehaviour
     
     private IEnumerator WaitBeforeDisplayingText()
     {
-        yield return new WaitForSeconds(0.66f);
+        yield return new WaitForSeconds(1.05f);
         ContinueStory();
         _isPlaying = true;
     }
@@ -169,14 +172,15 @@ public class DialogueManager : MonoBehaviour
         else
         {
             _isPlaying = false;
-            // StartCoroutine(WaitBeforeGivingControl());
+            StartCoroutine(WaitBeforeTransitioning());
         }
     }
 
-    // private IEnumerator WaitBeforeGivingControl()
-    // {
-    //     yield return new WaitForSeconds(0.1f);
-    // }
+    private IEnumerator WaitBeforeTransitioning()
+    {
+        yield return new WaitForSeconds(0.1f);
+        UITransitionController.Instance.TransitionAndLoad("MainMenu");
+    }
 
     private IEnumerator DisplayLine(string line)
     {
@@ -281,6 +285,10 @@ public class DialogueManager : MonoBehaviour
                 case SpeakerTag:
                     speakerText.text = value;
                     SetCurrentAudioInfo(value);
+                    break;
+                case EffectTag:
+                    var effectIndex = int.Parse(value);
+                    _audioSource.PlayOneShot(effectsAudioInfo.typingAudioClips[effectIndex]);
                     break;
                 default:
                     Debug.LogWarning("Given tag is not implemented:" + key);

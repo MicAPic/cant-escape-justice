@@ -13,7 +13,7 @@ Bailiff! Take him away immediately unless he wishes to face charges of court mis
 But I didn’t do it! #speaker:Gorg
 ~ ChangeSpeakerCardLeft()
 The court is now adjourned. #speaker:You
-… #speaker: 
+… #speaker: #sfx:0
 Gosh, I hope the prosecution gets me a fat paycheck for all the extra work they put me through… #speaker:You
 ~ ChangeSpeakerCardRight()
 Are you not ashamed of yourself? #speaker:???
@@ -27,13 +27,13 @@ I have come to stop your corrupt ways!
 By doing what, exactly? Speaking in a funny voice? #speaker:You
 Silence! #speaker:Václav
 ~ ScreenShake()
-… #speaker: 
+… #speaker: #sfx:1
 Eek! #speaker:You
 I sentence you to sit in this exact courtroom and solve cases until you repent from the bottom of your heart! #speaker:Václav
 (Is this really all the punishment?) #speaker:You
 No, it is not. #speaker:Václav
 Hey, who said you can read my thoughts? #speaker:You
-'Tis but one of my powers. #speaker:You
+'Tis but one of my powers. #speaker:Václav
 Let us add some challenge. Do not pass a false verdict. #speaker:Václav
 Not that I ever did. #speaker:You
 Of course, of course. #speaker:Václav
