@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e58732bb962fb4fb0b27e12ddfc921a2, type: 3}
-  m_Name: Default
+  m_Name: Sound Effects
   m_EditorClassIdentifier: 
   id: Default
   typingAudioClips:
+  - {fileID: 8300000, guid: 6fab3fae96e614871b07f3b091d3ea8a, type: 3}
   - {fileID: 8300000, guid: 6fab3fae96e614871b07f3b091d3ea8a, type: 3}
   minPitch: 1
   maxPitch: 1
