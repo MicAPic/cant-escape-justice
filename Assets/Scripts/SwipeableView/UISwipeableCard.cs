@@ -140,15 +140,25 @@ namespace SwipeableView
 
         public void EndSwipe()
         {
+            var dialogueManager = FindObjectOfType<DialogueManager>();
+            
             // over required distance -> Auto swipe
             if (IsSwipedRight(cachedRect.localPosition))
             {
-                Debug.Log($"You swiped right and the defendant is guilty: {isGuilty}");
                 AutoSwipeRight(cachedRect.localPosition);
+                if (dialogueManager)
+                {
+                    dialogueManager.SelectChoice(1);
+                }
+                Debug.Log($"You swiped right and the defendant is guilty: {isGuilty}");
             }
             else if (IsSwipedLeft(cachedRect.localPosition))
             {
                 Debug.Log($"You swiped left and the defendant is guilty: {isGuilty}");
+                if (dialogueManager)
+                {
+                    dialogueManager.SelectChoice(0);
+                }
                 AutoSwipeLeft(cachedRect.localPosition);
             }
             // Not been reached required distance -> Return to default position
@@ -157,16 +167,21 @@ namespace SwipeableView
                 StartCoroutine(MoveCoroutine(cachedRect.localPosition, Vector3.zero));
                 return;
             }
-            
-            // update hidden defendant's record 
-            GameManager.Instance.caseCounters[1].text = $"#{DataIndex + 2}";
-            var nextCase = FindObjectOfType<UISwipeableViewCourtroom>()._data[DataIndex + 1];
-            GameManager.Instance.caseDescriptions[1].text = nextCase.charge;
-            GameManager.Instance.caseSchedules[1].text = nextCase.schedule;
+
+            if (!dialogueManager)
+            {
+                // update the next defendant's record 
+                GameManager.Instance.caseCounters[1].text = $"#{DataIndex + 2}";
+                
+                var nextCase = FindObjectOfType<UISwipeableViewCourtroom>()._data[DataIndex + 1];
+                GameManager.Instance.caseDescriptions[1].text = nextCase.charge;
+                GameManager.Instance.caseSchedules[1].text = nextCase.schedule;
+                
+                Debug.Log($"{nextCase.charge} {nextCase.timeOfCrime} {nextCase.isGuilty}");
+            }
 
             // show it
             GameManager.Instance.SwitchCases();
-            Debug.Log($"{nextCase.charge} {nextCase.timeOfCrime} {nextCase.isGuilty}");
         }
 
         public void AutoSwipeRight(Vector3 from)
