@@ -1258,14 +1258,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '08:00--10:00 <indent=55%>Watched GMTK.</indent>
-
-    10:00--14:00 <indent=55%>Watched
-    GMTK.</indent>
-
-    14:00--18:00 <indent=55%>Played on a banjo.</indent>
-
-'
+  m_text: "17:30\u201318:00 <indent=55%>Watched GMTK.</indent>\n10:00-14:00 <indent=55%>Watched
+    GMTK.</indent>\n14:00-18:00 <indent=55%>Played on a banjo.</indent>\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3152,12 +3146,23 @@ MonoBehaviour:
   charges: {fileID: 11400000, guid: 47e086473a32dd34589882d02bcda9e0, type: 2}
   schedules: {fileID: 11400000, guid: ded2bc5e0b0c8044f89fb85e47a74ba5, type: 2}
   timesOfCrime: {fileID: 11400000, guid: b39436933fb25574da93314f3b2307b1, type: 2}
+  scheduleTime: {fileID: 11400000, guid: 6aeb1eb299e43a645ab4ba62d16e8029, type: 2}
+  hairData: {fileID: 11400000, guid: 95ec000a3762ee548ae86426eb92394e, type: 2}
+  eyeData: {fileID: 11400000, guid: 1d1fe131da3b44649a2846c376c14203, type: 2}
+  mouthData: {fileID: 11400000, guid: 12ba7820cbec0df448c2dc6dfdd7adb2, type: 2}
+  items: {fileID: 11400000, guid: 2cc16d9b4b3b76f40b03e6344f1c8469, type: 2}
   cases:
   - {fileID: 1152745587}
   - {fileID: 2056586964}
   caseCounters:
   - {fileID: 1692437508}
   - {fileID: 725532943}
+  caseSchedules:
+  - {fileID: 781999665}
+  - {fileID: 1913391924}
+  caseDescriptions:
+  - {fileID: 13920681}
+  - {fileID: 964237453}
   swipeableView: {fileID: 676153524}
 --- !u!4 &1850288516
 Transform:

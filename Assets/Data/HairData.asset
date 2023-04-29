@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99133599b1f44be479a109e99dcbe9cc, type: 3}
   m_Name: HairData
   m_EditorClassIdentifier: 
-  images: []
+  images:
+  - {fileID: 0}

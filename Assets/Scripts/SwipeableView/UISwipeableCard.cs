@@ -7,6 +7,9 @@ namespace SwipeableView
     public class UISwipeableCard<TData, TContext> : MonoBehaviour, ISwipeable where TContext : class
     {
         public bool isGuilty;
+        public string charge;
+        public string schedual;
+        public string timeOfCrime;
 
         [SerializeField] SwipeableViewData _viewData = default;
 
@@ -157,8 +160,11 @@ namespace SwipeableView
             
             // update hidden defendant's record 
             GameManager.Instance.caseCounters[1].text = $"#{DataIndex + 2}";
+            GameManager.Instance.caseDescriptions[1].text = charge;
+            GameManager.Instance.caseSchedules[1].text = schedual; 
             // show it
             GameManager.Instance.SwitchCases();
+            Debug.Log($"{timeOfCrime} {isGuilty}");
         }
 
         public void AutoSwipeRight(Vector3 from)
