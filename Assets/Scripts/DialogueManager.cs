@@ -266,6 +266,7 @@ public class DialogueManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Failed to find audio for id: " + id);
+            _currentAudioInfo = defaultAudioInfo;
         }
     }
 }

@@ -181,8 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Just don't lose me on your way, for there is a task that we must fulfill.
-    Just don't lose me on your way,
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -299,7 +298,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 264d4c53391624496abcb79bb05bd9b9, type: 2}
   - {fileID: 11400000, guid: f8d6ef190021a4e82988753b833f1594, type: 2}
   frequencyLevel: 2
-  stopAudioSource: 1
+  stopAudioSource: 0
 --- !u!4 &43307643
 Transform:
   m_ObjectHideFlags: 0
@@ -2880,7 +2879,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ctrl
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
