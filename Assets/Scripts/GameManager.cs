@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using SwipeableView;
@@ -5,6 +7,7 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using System.Text;
+using TMPro.SpriteAssetUtilities;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,7 +26,8 @@ public class GameManager : MonoBehaviour
     public ImageRandomData hairData;
     public ImageRandomData eyeData;
     public ImageRandomData mouthData;
-    private List<Sprite> _allFeatures;
+    public List<Sprite> allFeatures;
+    public List<Sprite> allItems;
 
     public ImageRandomData itemData; 
     
@@ -55,13 +59,14 @@ public class GameManager : MonoBehaviour
             _dialogueManager.StartDialogue();    
         }
 
-        _allFeatures = hairData.images.Concat(eyeData.images.Concat(mouthData.images)).ToList();
+        allFeatures = hairData.images.Concat(eyeData.images.Concat(mouthData.images)).ToList();
     }
     
     private bool curGuilty;
     private string curTimeOfCrime;
+
     private List<string> curFeatures = new();
-    
+    private List<string> curItems = new();
     // Start is called before the first frame update
     void Start()
     {
@@ -99,15 +104,17 @@ public class GameManager : MonoBehaviour
                     mouth = GenerateFeature(mouthData),
                     hair = GenerateFeature(hairData),
                     
+                    items = GenerateItemsList(),
+                    
+
                     isGuilty = GenerateGuilt(),
                     charge = GenerateCharge(),
                     timeOfCrime = GenerateTimeOfCrime(),
-                    //weapon = items.images[(int)(Random.value * 100) % items.images.Count]
+
                     feature = GenerateIncriminatingFeature(),
+                    weapon = GenerateIncriminatingItems(),
 
                     schedule = GenerateSchedule(curGuilty, curTimeOfCrime)
-
-                    //items = ...
                 })
                 .ToList();
         }
@@ -120,6 +127,18 @@ public class GameManager : MonoBehaviour
         var feature = featureData.images[Random.Range(0, featureData.images.Count)]; 
         curFeatures.Add(feature.name);
         return feature;
+    }
+
+    private List<Sprite> GenerateItemsList()
+    {
+        List<Sprite> res = new List<Sprite>();
+        for(int i = 0; i < 5; ++i)
+        {
+            var item = itemData.images[Random.Range(0, itemData.images.Count)];
+            res.Add(item);
+            curItems.Add(item.name);
+        }
+        return res;
     }
     private bool GenerateGuilt()
     {
@@ -142,9 +161,18 @@ public class GameManager : MonoBehaviour
 
         return probability > epsilon ? 
             curFeatures[Random.Range(0, curFeatures.Count)] : 
-            _allFeatures[Random.Range(0, _allFeatures.Count)].name;
+            allFeatures[Random.Range(0, allFeatures.Count)].name;
     }
-    
+
+    private string GenerateIncriminatingItems()
+    {
+        var probability = curGuilty ? 1.0f : Random.value;
+
+        return probability > epsilon ?
+            curItems[Random.Range(0, curItems.Count)] :
+            itemData.images[Random.Range(0, itemData.images.Count)].name;
+    }
+
     private string GenerateSchedule(bool isGuilty, string timeOfCrime)
     {
         StringBuilder schedule = new StringBuilder(100);
