@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     private ProofOfInnocence curProof;
     private enum ProofOfInnocence
     {
-        SCHEDUAL,
+        SCHEDULE,
         FACE,
         ITEMS
     }
@@ -100,73 +100,72 @@ public class GameManager : MonoBehaviour
     }
     private string GenerateSchedule(bool isGuilty, string timeOfCrime)
     {
-        StringBuilder schedual = new StringBuilder(100);
-        int firstSchedualH;
-        int secondSchedualH;
-        if (!isGuilty /*|| curProof != ProofOfInnocence.SCHEDUAL*/)
+        StringBuilder schedule = new StringBuilder(100);
+        int firstScheduleH;
+        int secondScheduleH;
+        if (!isGuilty /*|| curProof != ProofOfInnocence.SCHEDULE*/)
         {
             int hours = int.Parse(timeOfCrime.Split(":")[0]);
             //int minutes = int.Parse(timeOfCrime.Split(":")[1]);
-            
-            if (hours < 13)
+
+            switch (hours)
             {
-                firstSchedualH = 8 + (int)(Random.value * 100) % (hours - 7);
-                secondSchedualH = hours + 1 + (int)(Random.value * 100) % (13 - hours);
-                schedual.Append($"{firstSchedualH}:00–{secondSchedualH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
+                case < 13:
+                    firstScheduleH = 8 + (int)(Random.value * 100) % (hours - 7);
+                    secondScheduleH = hours + 1 + (int)(Random.value * 100) % (13 - hours);
+                    schedule.Append($"{firstScheduleH}:00â€“{secondScheduleH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
 
-                firstSchedualH = 13 + (int)(Random.value * 100) % 5;
-                secondSchedualH = firstSchedualH + 1 + (int)(Random.value * 100) % (18 - firstSchedualH);
-                schedual.Append($"{firstSchedualH}:00–{secondSchedualH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
+                    firstScheduleH = 13 + (int)(Random.value * 100) % 5;
+                    secondScheduleH = firstScheduleH + 1 + (int)(Random.value * 100) % (18 - firstScheduleH);
+                    schedule.Append($"{firstScheduleH}:00â€“{secondScheduleH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
 
-                firstSchedualH = 18 + (int)(Random.value * 100) % 5;
-                secondSchedualH = firstSchedualH + 1 + (int)(Random.value * 100) % (23 - firstSchedualH);
-                schedual.Append($"{firstSchedualH}:00–{secondSchedualH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>");
-            } 
-            else if(hours >= 13 && hours < 18)
-            {
-                firstSchedualH = 8 + (int)(Random.value * 100) % 5;
-                secondSchedualH = firstSchedualH + 1 + (int)(Random.value * 100) % (13 - firstSchedualH);
-                schedual.Append($"{firstSchedualH}:00–{secondSchedualH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
+                    firstScheduleH = 18 + (int)(Random.value * 100) % 5;
+                    secondScheduleH = firstScheduleH + 1 + (int)(Random.value * 100) % (23 - firstScheduleH);
+                    schedule.Append($"{firstScheduleH}:00â€“{secondScheduleH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>");
+                    break;
+                case < 18:
+                    firstScheduleH = 8 + (int)(Random.value * 100) % 5;
+                    secondScheduleH = firstScheduleH + 1 + (int)(Random.value * 100) % (13 - firstScheduleH);
+                    schedule.Append($"{firstScheduleH}:00â€“{secondScheduleH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
 
-                firstSchedualH = 13 + (int)(Random.value * 100) % (hours - 12);
-                secondSchedualH = hours + 1 + (int)(Random.value * 100) % (18 - hours);
-                schedual.Append($"{firstSchedualH}:00–{secondSchedualH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
+                    firstScheduleH = 13 + (int)(Random.value * 100) % (hours - 12);
+                    secondScheduleH = hours + 1 + (int)(Random.value * 100) % (18 - hours);
+                    schedule.Append($"{firstScheduleH}:00â€“{secondScheduleH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
 
-                firstSchedualH = 18 + (int)(Random.value * 100) % 5;
-                secondSchedualH = firstSchedualH + 1 + (int)(Random.value * 100) % (23 - firstSchedualH);
-                schedual.Append($"{firstSchedualH}:00–{secondSchedualH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>");
-            }
-            else
-            {
-                firstSchedualH = 8 + (int)(Random.value * 100) % 5;
-                secondSchedualH = firstSchedualH + 1 + (int)(Random.value * 100) % (13 - firstSchedualH);
-                schedual.Append($"{firstSchedualH}:00–{secondSchedualH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
+                    firstScheduleH = 18 + (int)(Random.value * 100) % 5;
+                    secondScheduleH = firstScheduleH + 1 + (int)(Random.value * 100) % (23 - firstScheduleH);
+                    schedule.Append($"{firstScheduleH}:00â€“{secondScheduleH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>");
+                    break;
+                default:
+                    firstScheduleH = 8 + (int)(Random.value * 100) % 5;
+                    secondScheduleH = firstScheduleH + 1 + (int)(Random.value * 100) % (13 - firstScheduleH);
+                    schedule.Append($"{firstScheduleH}:00â€“{secondScheduleH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
 
-                firstSchedualH = 13 + (int)(Random.value * 100) % 5;
-                secondSchedualH = firstSchedualH + 1 + (int)(Random.value * 100) % (18 - firstSchedualH);
-                schedual.Append($"{firstSchedualH}:00–{secondSchedualH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
+                    firstScheduleH = 13 + (int)(Random.value * 100) % 5;
+                    secondScheduleH = firstScheduleH + 1 + (int)(Random.value * 100) % (18 - firstScheduleH);
+                    schedule.Append($"{firstScheduleH}:00â€“{secondScheduleH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
 
-                firstSchedualH = 18 + (int)(Random.value * 100) % (hours - 17);
-                secondSchedualH = hours + 1 + (int)(Random.value * 100) % (23 - hours);
-                schedual.Append($"{firstSchedualH}:00–{secondSchedualH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>");
-
+                    firstScheduleH = 18 + (int)(Random.value * 100) % (hours - 17);
+                    secondScheduleH = hours + 1 + (int)(Random.value * 100) % (23 - hours);
+                    schedule.Append($"{firstScheduleH}:00â€“{secondScheduleH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>");
+                    break;
             }
         }
         else
         {
-            firstSchedualH = 8 + (int)(Random.value * 100) % 5;
-            secondSchedualH = firstSchedualH + 1 + (int)(Random.value * 100) % (13 - firstSchedualH);
-            schedual.Append($"{firstSchedualH}:00–{secondSchedualH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
+            firstScheduleH = 8 + (int)(Random.value * 100) % 5;
+            secondScheduleH = firstScheduleH + 1 + (int)(Random.value * 100) % (13 - firstScheduleH);
+            schedule.Append($"{firstScheduleH}:00â€“{secondScheduleH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
 
-            firstSchedualH = 13 + (int)(Random.value * 100) % 5;
-            secondSchedualH = firstSchedualH + 1 + (int)(Random.value * 100) % (18 - firstSchedualH);
-            schedual.Append($"{firstSchedualH}:00–{secondSchedualH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
+            firstScheduleH = 13 + (int)(Random.value * 100) % 5;
+            secondScheduleH = firstScheduleH + 1 + (int)(Random.value * 100) % (18 - firstScheduleH);
+            schedule.Append($"{firstScheduleH}:00â€“{secondScheduleH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>\n");
 
-            firstSchedualH = 18 + (int)(Random.value * 100) % 5;
-            secondSchedualH = firstSchedualH + 1 + (int)(Random.value * 100) % (23 - firstSchedualH);
-            schedual.Append($"{firstSchedualH}:00–{secondSchedualH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>");
+            firstScheduleH = 18 + (int)(Random.value * 100) % 5;
+            secondScheduleH = firstScheduleH + 1 + (int)(Random.value * 100) % (23 - firstScheduleH);
+            schedule.Append($"{firstScheduleH}:00â€“{secondScheduleH}:00 <indent=55%>{GenerateSchedualBuisness()}</indent>");
         }
-        return schedual.ToString();
+        return schedule.ToString();
     }
 
     private string GenerateSchedualBuisness()

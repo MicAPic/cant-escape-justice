@@ -20,7 +20,7 @@ namespace SwipeableView
         {
             isGuilty = data.isGuilty;
             charge = data.charge;
-            schedual = data.schedule;
+            schedule = data.schedule;
             timeOfCrime = data.timeOfCrime;
             
             bg.color = data.color;

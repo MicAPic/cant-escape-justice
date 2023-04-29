@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace SwipeableView
 {
@@ -9,7 +8,7 @@ namespace SwipeableView
     {
         public bool isGuilty;
         public string charge;
-        public string schedual;
+        public string schedule;
         public string timeOfCrime;
 
         [SerializeField] SwipeableViewData _viewData = default;
@@ -162,7 +161,7 @@ namespace SwipeableView
             // update hidden defendant's record 
             GameManager.Instance.caseCounters[1].text = $"#{DataIndex + 2}";
             GameManager.Instance.caseDescriptions[1].text = charge;
-            GameManager.Instance.caseSchedules[1].text = schedual; 
+            GameManager.Instance.caseSchedules[1].text = schedule; 
             // show it
             GameManager.Instance.SwitchCases();
             Debug.Log($"{timeOfCrime} {isGuilty}");
