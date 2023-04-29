@@ -30,6 +30,7 @@ namespace SwipeableView
         private const float _epsion = 1.192093E-07f;
 
         private UISwipeableViewCourtroom _swipeableView;
+        private DialogueManager _dialogueManager;
 
         void OnEnable()
         {
@@ -40,7 +41,12 @@ namespace SwipeableView
         void Start()
         {
             _swipeableView = FindObjectOfType<UISwipeableViewCourtroom>();
-            PopulateCase(0, 0);
+            _dialogueManager = FindObjectOfType<DialogueManager>();
+            
+            if (!_dialogueManager)
+            {
+                PopulateCase(0, 0);
+            }
         }
 
         void Update()
@@ -144,25 +150,24 @@ namespace SwipeableView
 
         public void EndSwipe()
         {
-            var dialogueManager = FindObjectOfType<DialogueManager>();
             var isGuilty = _swipeableView._data[DataIndex].isGuilty;
             
             // over required distance -> Auto swipe
             if (IsSwipedRight(cachedRect.localPosition))
             {
                 AutoSwipeRight(cachedRect.localPosition);
-                if (dialogueManager)
+                if (_dialogueManager)
                 {
-                    dialogueManager.SelectChoice(2);
+                    _dialogueManager.SelectChoice(2);
                 }
                 Debug.Log($"You swiped right and the defendant is guilty: {isGuilty}");
             }
             else if (IsSwipedLeft(cachedRect.localPosition))
             {
                 Debug.Log($"You swiped left and the defendant is guilty: {isGuilty}");
-                if (dialogueManager)
+                if (_dialogueManager)
                 {
-                    dialogueManager.SelectChoice(1);
+                    _dialogueManager.SelectChoice(1);
                 }
                 AutoSwipeLeft(cachedRect.localPosition);
             }
@@ -173,7 +178,7 @@ namespace SwipeableView
                 return;
             }
 
-            if (!dialogueManager)
+            if (!_dialogueManager)
             {
                 // update the next defendant's record 
                 PopulateCase(DataIndex + 1);

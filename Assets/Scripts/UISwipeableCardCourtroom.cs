@@ -29,6 +29,12 @@ namespace SwipeableView
             eyes.sprite = data.eyes;
             mouth.sprite = data.mouth;
             hair.sprite = data.hair;
+            if (!eyes.sprite)
+            {
+                eyes.color = Color.clear;
+                mouth.color = Color.clear;
+                // hair.color = Color.clear;
+            }
             
             imgLike.alpha = 0;
             imgNope.alpha = 0;

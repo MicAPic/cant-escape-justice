@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using SwipeableView;
@@ -7,7 +5,6 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using System.Text;
-using TMPro.SpriteAssetUtilities;
 
 public class GameManager : MonoBehaviour
 {
@@ -59,7 +56,7 @@ public class GameManager : MonoBehaviour
             _dialogueManager.StartDialogue();    
         }
 
-        allFeatures = hairData.images.Concat(eyeData.images.Concat(mouthData.images)).ToList();
+        _allFeatures = hairData.images.Concat(eyeData.images.Concat(mouthData.images)).ToList();
     }
     
     private bool curGuilty;
@@ -77,22 +74,24 @@ public class GameManager : MonoBehaviour
             data = Enumerable.Range(0, 1000)
                 .Select(i => new DefendantRecord
                 {
-                    // color = i % 2 == 0 ? _dialogueManager.gavelColor : _dialogueManager.defendantColor,
+                    potato = i % 2 == 0 ? _dialogueManager.gavelSprite : _dialogueManager.defendantSprite,
+                    eyes = null,
+                    mouth = null,
+                    hair = null,
+                    
                     isGuilty = false,
                     charge = string.Empty,
                     timeOfCrime = string.Empty,
-                    //weapon = items.images[(int)(Random.value * 100) % items.images.Count]
+                    weapon = null,
 
-                    schedule = string.Empty
+                    schedule = string.Empty,
 
-                    //items = ...
-
-                    //face = ...
+                    items = null
                 })
                 .ToList();
 
-            // data[1].color = _dialogueManager.courtroomColor;
-            // data[0].color = _dialogueManager.defendantColor;
+            data[1].potato = _dialogueManager.courtroomSprite;
+            data[0].potato = _dialogueManager.defendantSprite;
         }
         else
         {
@@ -161,7 +160,7 @@ public class GameManager : MonoBehaviour
 
         return probability > epsilon ? 
             curFeatures[Random.Range(0, curFeatures.Count)] : 
-            allFeatures[Random.Range(0, allFeatures.Count)].name;
+            _allFeatures[Random.Range(0, _allFeatures.Count)].name;
     }
 
     private string GenerateIncriminatingItems()

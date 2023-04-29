@@ -1248,5 +1248,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7710171331572832387, guid: e9dc17140a28f4656bd45669bff8efe7, type: 3}
+      propertyPath: m_text
+      value: "08:00\u201310:00 <indent=55%>Sunbathed at the beach</indent>\n"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9dc17140a28f4656bd45669bff8efe7, type: 3}
