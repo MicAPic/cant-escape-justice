@@ -17,8 +17,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] 
     private RectTransform inputArea;
     [SerializeField] 
-    private CanvasGroup tutorialBlock;
-    [SerializeField] 
     private GameObject timer;
     [SerializeField] 
     private TMP_Text speakerText;
@@ -106,28 +104,35 @@ public class DialogueManager : MonoBehaviour
         _story.BindExternalFunction("EnableSwiping", () =>
         {
             inputArea.offsetMin = new Vector2(790.0f, inputArea.offsetMin.y);
-            tutorialBlock.blocksRaycasts = true;
+            GameManager.Instance.raycastBlock.blocksRaycasts = true;
             GameManager.Instance.SwitchCases();
+            
+            Timer.Instance.Reset();
+            Timer.Instance.stopTimer = false;
         });
         _story.BindExternalFunction("DisableSwiping", () =>
         {
             inputArea.offsetMin = new Vector2(0.0f, inputArea.offsetMin.y);
-            tutorialBlock.blocksRaycasts = false;
+            GameManager.Instance.raycastBlock.blocksRaycasts = false;
+            
+            Timer.Instance.Reset();
+            Timer.Instance.stopTimer = true;
         });
         _story.BindExternalFunction("ChangeSpeakerCardLeft", () =>
         {
-            var currentCard = tutorialBlock.GetComponentsInChildren<UISwipeableCardCourtroom>()[^1];
+            var currentCard = GameManager.Instance.raycastBlock.GetComponentsInChildren<UISwipeableCardCourtroom>()[^1];
             currentCard.AutoSwipeLeft(currentCard.cachedRect.localPosition);
         });
         _story.BindExternalFunction("ChangeSpeakerCardRight", () =>
         {
-            var currentCard = tutorialBlock.GetComponentsInChildren<UISwipeableCardCourtroom>()[^1];
+            var currentCard = GameManager.Instance.raycastBlock.GetComponentsInChildren<UISwipeableCardCourtroom>()[^1];
             currentCard.AutoSwipeRight(currentCard.cachedRect.localPosition);
         });
         _story.BindExternalFunction("AddTimer", () =>
         {
             Debug.Log("TODO: Add an animation");
             timer.SetActive(true);
+            Timer.Instance.stopTimer = true;
         });
         _story.BindExternalFunction("ScreenShake", () =>
         {

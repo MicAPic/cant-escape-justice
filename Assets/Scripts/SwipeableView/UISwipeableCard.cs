@@ -152,7 +152,7 @@ namespace SwipeableView
                 AutoSwipeRight(cachedRect.localPosition);
                 if (dialogueManager)
                 {
-                    dialogueManager.SelectChoice(1);
+                    dialogueManager.SelectChoice(2);
                 }
                 Debug.Log($"You swiped right and the defendant is guilty: {isGuilty}");
             }
@@ -161,7 +161,7 @@ namespace SwipeableView
                 Debug.Log($"You swiped left and the defendant is guilty: {isGuilty}");
                 if (dialogueManager)
                 {
-                    dialogueManager.SelectChoice(0);
+                    dialogueManager.SelectChoice(1);
                 }
                 AutoSwipeLeft(cachedRect.localPosition);
             }
@@ -186,9 +186,9 @@ namespace SwipeableView
                 
                 Debug.Log($"{nextCase.charge} {nextCase.timeOfCrime} {nextCase.isGuilty}");
             }
-
-            // show it
+            
             GameManager.Instance.SwitchCases();
+            Timer.Instance.Reset();
         }
 
         public void AutoSwipeRight(Vector3 from)

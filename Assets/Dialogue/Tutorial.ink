@@ -48,6 +48,12 @@ Analyze their case properly and then swipe their profile <b>left</b> or <b>right
 === choice ===
 ~ ChangeSpeakerCardRight()
 ~ EnableSwiping()
+    + [timeout]
+        ~ DisableSwiping()
+        Are you going to sit here all day and do nothing? #speaker:Václav
+        I have a whole country's worth of corrupt judges like you.
+        Let us do this again from the start. 
+        -> choice
     + [left]
         ~ DisableSwiping()
         Are you sure you made the right choice? #speaker:Václav
@@ -56,7 +62,7 @@ Analyze their case properly and then swipe their profile <b>left</b> or <b>right
     + [right]
         ~ DisableSwiping()
         At last! #speaker:Václav
--> finale
+        -> finale
 
 === finale ===
 See? Doesn't it feel good to pass a proper verdict? #speaker:Václav

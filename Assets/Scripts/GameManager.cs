@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     
+    [Header("Game Rules")]
+
     [Header("Generator")]
     public StringsRandomData charges;
     public StringsRandomData schedules;
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     public ImageRandomData items; 
     
     [Header("UI")]
+    public CanvasGroup raycastBlock;
     public GameObject[] cases;
     public TMP_Text[] caseCounters;
     public TMP_Text[] caseSchedules;
