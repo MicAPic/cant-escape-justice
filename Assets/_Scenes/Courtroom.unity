@@ -181,9 +181,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Defendant is accused of drawing nude characters from \"Harry Potter\"
-    at <color=#000>17:00</color> using <color=#000>carrot.png</color>. \nDistinguishing
-    features: <color=#000>glasses.png</color>, <color=#000>clownnos.png</color>."
+  m_text: 'Defendant is accused of drawing nude characters from "Harry Potter" at
+    <color=#000>17:00</color> using <color=#000>carrot.png</color>.
+
+    Distinguishing
+    features: <color=#000>glasses.png</color>, <color=#000>clownnos.png</color>.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

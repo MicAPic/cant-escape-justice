@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ChargesData
   m_EditorClassIdentifier: 
   strings:
-  - 'Forbidding birds to fly south '
-  - 'Googling celebrities'' feet '
-  - 'Drawing naked characters from "Harry Potter" '
+  - Forbidding birds to fly south
+  - Googling celebrities' feet
+  - Drawing naked characters from "Harry Potter"
   - Disliking GMTK's videos
   - "Shaving the barista\u2019s moustache"

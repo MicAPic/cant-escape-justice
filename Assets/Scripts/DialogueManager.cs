@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
-    public static DialogueManager Instance;
-
     [Header("Parameters")] 
     [SerializeField]
     private float textSpeed = 0.04f;
@@ -49,6 +47,11 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private bool stopAudioSource;
     
+    [Header("Characters")]
+    public Color gavelColor;
+    public Color defendantColor;
+    public Color courtroomColor;
+    
     private bool _isPlaying;
     private bool _isDisplayingRichText;
     private int _maxLineLength;
@@ -59,14 +62,6 @@ public class DialogueManager : MonoBehaviour
     
     void Awake() 
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        
         _audioSource = gameObject.AddComponent<AudioSource>();
         InitializeAudioInfoDictionary();
         _currentAudioInfo = defaultAudioInfo;
@@ -103,10 +98,13 @@ public class DialogueManager : MonoBehaviour
     {
 
         _story = new Story(inkScript.text);
+        
+        // external functions
         _story.BindExternalFunction("EnableSwiping", () =>
         {
             inputArea.offsetMin = new Vector2(790.0f, inputArea.offsetMin.y);
             tutorialBlock.blocksRaycasts = true;
+            GameManager.Instance.SwitchCases();
         });
         _story.BindExternalFunction("DisableSwiping", () =>
         {
@@ -115,13 +113,11 @@ public class DialogueManager : MonoBehaviour
         });
         _story.BindExternalFunction("ChangeSpeakerCardLeft", () =>
         {
-            Debug.Log("I get called");
             var currentCard = tutorialBlock.GetComponentsInChildren<UISwipeableCardCourtroom>()[^1];
             currentCard.AutoSwipeLeft(currentCard.cachedRect.localPosition);
         });
         _story.BindExternalFunction("ChangeSpeakerCardRight", () =>
         {
-            Debug.Log("I get called");
             var currentCard = tutorialBlock.GetComponentsInChildren<UISwipeableCardCourtroom>()[^1];
             currentCard.AutoSwipeRight(currentCard.cachedRect.localPosition);
         });
@@ -134,8 +130,19 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.Log("TODO: Add a screen shake");
         });
+        //
 
         StartCoroutine(WaitBeforeDisplayingText());
+    }
+    
+    public void SelectChoice(int id)
+    {
+        if (_canContinue)
+        {
+            _story.ChooseChoiceIndex(id);
+            // _story.Continue();
+            ContinueStory();
+        }
     }
     
     private IEnumerator WaitBeforeDisplayingText()

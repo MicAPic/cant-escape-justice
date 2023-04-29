@@ -37,23 +37,23 @@ Hey, who said you can read my thoughts? #speaker:You
 Let us add some challenge. Do not pass a false verdict. #speaker:Václav
 Not that I ever did. #speaker:You
 Of course, of course. #speaker:Václav
-I see that you are still a long way from the true repentance. #speaker:Václav
+I see that you are still a long way from true repentance. #speaker:Václav
 I shall add a timer as well. #speaker:Václav
 ~ AddTimer()
 (What did I get myself into…) #speaker:You
-While we at it, let us review your last defendant's verdict. #speaker:Václav
+While we are at it, let us review your last defendant's verdict. #speaker:Václav
 Analyze their case properly and then swipe their profile <b>left</b> or <b>right</b>. Your kind must be familliar with this.
 -> choice
 
 === choice ===
 ~ ChangeSpeakerCardRight()
 ~ EnableSwiping()
-    * left
+    + [left]
         ~ DisableSwiping()
         Are you sure you made the right choice? #speaker:Václav
         Let us try again.
         -> choice
-    * right
+    + [right]
         ~ DisableSwiping()
         At last! #speaker:Václav
 -> finale

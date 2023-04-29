@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] 
     private UISwipeableViewCourtroom swipeableView;
 
+    [Header("Dialogue")] 
+    private DialogueManager _dialogueManager;
+
     void Awake()
     {
         if (Instance != null)
@@ -40,35 +43,61 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
 
-        var dialogueManager = FindObjectOfType<DialogueManager>();
-        if (dialogueManager)
+        _dialogueManager = FindObjectOfType<DialogueManager>();
+        if (_dialogueManager)
         {
-            dialogueManager.StartDialogue();    
+            _dialogueManager.StartDialogue();    
         }
     }
-
 
     private bool curGuilty;
     private string curTimeOfCrime;
     // Start is called before the first frame update
     void Start()
     {
-        var data = Enumerable.Range(0, 1000)
-            .Select(i => new DefendantRecord
-            {
-                color = new Color(Random.value, Random.value, Random.value, 1.0f),
-                isGuilty = GenerateGuilty(), // random bool
-                charge = GenerateCharge(),
-                timeOfCrime = GenerateTimeOfCrime(),
-                //weapon = items.images[(int)(Random.value * 100) % items.images.Count]
-                
-                schedule = GenerateSchedule(curGuilty, curTimeOfCrime)
+        List<DefendantRecord> data;
+        
+        if (_dialogueManager)
+        {
+            data = Enumerable.Range(0, 1000)
+                .Select(i => new DefendantRecord
+                {
+                    color = i % 2 == 0 ? _dialogueManager.gavelColor : _dialogueManager.defendantColor,
+                    isGuilty = false,
+                    charge = string.Empty,
+                    timeOfCrime = string.Empty,
+                    //weapon = items.images[(int)(Random.value * 100) % items.images.Count]
 
-                //items = ...
+                    schedule = string.Empty
 
-                //face = ...
-            })
-            .ToList();
+                    //items = ...
+
+                    //face = ...
+                })
+                .ToList();
+
+            data[1].color = _dialogueManager.courtroomColor;
+            data[0].color = _dialogueManager.defendantColor;
+        }
+        else
+        {
+            data = Enumerable.Range(0, 1000)
+                .Select(i => new DefendantRecord
+                {
+                    color = new Color(Random.value, Random.value, Random.value, 1.0f),
+                    isGuilty = GenerateGuilty(), // random bool
+                    charge = GenerateCharge(),
+                    timeOfCrime = GenerateTimeOfCrime(),
+                    //weapon = items.images[(int)(Random.value * 100) % items.images.Count]
+
+                    schedule = GenerateSchedule(curGuilty, curTimeOfCrime)
+
+                    //items = ...
+
+                    //face = ...
+                })
+                .ToList();
+        }
 
         swipeableView.UpdateData(data);
     }
