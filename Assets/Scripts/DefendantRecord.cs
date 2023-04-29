@@ -4,10 +4,11 @@ using UnityEngine;
 public class DefendantRecord
 {
     public bool isGuilty;
+
     //���������
     public string charge;
     public string timeOfCrime;
-    public Sprite weapon;
+    public string weapon;
     public string feature;
 
     //�����

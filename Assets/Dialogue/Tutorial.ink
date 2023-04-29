@@ -42,7 +42,9 @@ I shall add a timer as well. #speaker:Václav
 ~ AddTimer()
 (What did I get myself into…) #speaker:You
 While we are at it, let us review your last defendant's verdict. #speaker:Václav
-Analyze their case properly and then swipe their profile <b>left</b> or <b>right</b>. Your kind must be familliar with this.
+Every case consists of three parts: an accusation, defendant's schedule and a list of their possessions.
+Analyze all three properly and then swipe the profile <b>left</b> or <b>right</b>.
+Your kind must be familliar with this approach.
 -> choice
 
 === choice ===

@@ -211,7 +211,7 @@ namespace SwipeableView
             var description = new StringBuilder(100);
             description.Append("Defendant is accused of ");
             description.Append($"{nextCase.charge} at <color=#000>{nextCase.timeOfCrime}</color> " +
-                               $"using <color=#000>carrot.png</color>.\n \n");
+                               $"using <color=#000>{nextCase.weapon}</color>.\n \n");
             description.Append($"Distinguishing features: <sprite name=\"{nextCase.feature}\">");
                     
             GameManager.Instance.caseDescriptions[caseIndex].text = description.ToString();
