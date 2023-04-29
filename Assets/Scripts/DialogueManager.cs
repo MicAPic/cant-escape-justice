@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using Ink.Runtime;
+using SwipeableView;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
@@ -18,6 +16,12 @@ public class DialogueManager : MonoBehaviour
     private float skipCooldownTime = 0.5f;
 
     [Header("UI")]
+    [SerializeField] 
+    private RectTransform inputArea;
+    [SerializeField] 
+    private CanvasGroup tutorialBlock;
+    [SerializeField] 
+    private GameObject timer;
     [SerializeField] 
     private TMP_Text speakerText;
     [SerializeField] 
@@ -75,18 +79,23 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
         {
-            if (_canContinue)
-            {
-                ContinueStory();   
-            }
-            else if (_canSkip && _story.canContinue)
-            {
-                StopCoroutine(_displayLineCoroutine);
-                dialogueText.maxVisibleCharacters = _maxLineLength;
-                FinishDisplayingLine();
-            }
+            ProcessInput();
+        }
+    }
+
+    public void ProcessInput()
+    {
+        if (_canContinue)
+        {
+            ContinueStory();   
+        }
+        else if (_canSkip)
+        {
+            StopCoroutine(_displayLineCoroutine);
+            dialogueText.maxVisibleCharacters = _maxLineLength;
+            FinishDisplayingLine();
         }
     }
     
@@ -94,10 +103,37 @@ public class DialogueManager : MonoBehaviour
     {
 
         _story = new Story(inkScript.text);
-        // _story.BindExternalFunction("finishLevel", (string mode) =>
-        // {
-        //     
-        // });
+        _story.BindExternalFunction("EnableSwiping", () =>
+        {
+            inputArea.offsetMin = new Vector2(790.0f, inputArea.offsetMin.y);
+            tutorialBlock.blocksRaycasts = true;
+        });
+        _story.BindExternalFunction("DisableSwiping", () =>
+        {
+            inputArea.offsetMin = new Vector2(0.0f, inputArea.offsetMin.y);
+            tutorialBlock.blocksRaycasts = false;
+        });
+        _story.BindExternalFunction("ChangeSpeakerCardLeft", () =>
+        {
+            Debug.Log("I get called");
+            var currentCard = tutorialBlock.GetComponentsInChildren<UISwipeableCardCourtroom>()[^1];
+            currentCard.AutoSwipeLeft(currentCard.cachedRect.localPosition);
+        });
+        _story.BindExternalFunction("ChangeSpeakerCardRight", () =>
+        {
+            Debug.Log("I get called");
+            var currentCard = tutorialBlock.GetComponentsInChildren<UISwipeableCardCourtroom>()[^1];
+            currentCard.AutoSwipeRight(currentCard.cachedRect.localPosition);
+        });
+        _story.BindExternalFunction("AddTimer", () =>
+        {
+            Debug.Log("TODO: Add an animation");
+            timer.SetActive(true);
+        });
+        _story.BindExternalFunction("ScreenShake", () =>
+        {
+            Debug.Log("TODO: Add a screen shake");
+        });
 
         StartCoroutine(WaitBeforeDisplayingText());
     }

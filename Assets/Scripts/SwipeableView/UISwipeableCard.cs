@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SwipeableView
 {
@@ -25,20 +26,20 @@ namespace SwipeableView
 
         protected TContext Context { get; private set; }
 
-        RectTransform _cachedRect;
+        public RectTransform cachedRect;
         int _screenSize;
 
         private const float _epsion = 1.192093E-07f;
 
         void OnEnable()
         {
-            _cachedRect = transform as RectTransform;
+            cachedRect = transform as RectTransform;
             _screenSize = Screen.height > Screen.width ? Screen.width : Screen.height;
         }
 
         void Update()
         {
-            var rectPosX = _cachedRect.localPosition.x;
+            var rectPosX = cachedRect.localPosition.x;
             if (Math.Abs(rectPosX) < _epsion)
             {
                 SwipingRight(0);
@@ -94,7 +95,7 @@ namespace SwipeableView
         /// <param name="position"></param>
         public virtual void UpdatePosition(Vector3 position)
         {
-            _cachedRect.localPosition = position;
+            cachedRect.localPosition = position;
         }
 
         /// <summary>
@@ -103,7 +104,7 @@ namespace SwipeableView
         /// <param name="rotation"></param>
         public virtual void UpdateRotation(Vector3 rotation)
         {
-            _cachedRect.localEulerAngles = rotation;
+            cachedRect.localEulerAngles = rotation;
         }
 
         /// <summary>
@@ -112,7 +113,7 @@ namespace SwipeableView
         /// <param name="scale"></param>
         public virtual void UpdateScale(float scale)
         {
-            _cachedRect.localScale = scale * Vector3.one;
+            cachedRect.localScale = scale * Vector3.one;
         }
 
         /// <summary>
@@ -132,26 +133,26 @@ namespace SwipeableView
 #region ISwipeable
         public void Swipe(Vector2 position)
         {
-            UpdatePosition(_cachedRect.localPosition + new Vector3(position.x, position.y, 0));
+            UpdatePosition(cachedRect.localPosition + new Vector3(position.x, position.y, 0));
         }
 
         public void EndSwipe()
         {
             // over required distance -> Auto swipe
-            if (IsSwipedRight(_cachedRect.localPosition))
+            if (IsSwipedRight(cachedRect.localPosition))
             {
                 Debug.Log($"You swiped right and the defendant is guilty: {isGuilty}");
-                AutoSwipeRight(_cachedRect.localPosition);
+                AutoSwipeRight(cachedRect.localPosition);
             }
-            else if (IsSwipedLeft(_cachedRect.localPosition))
+            else if (IsSwipedLeft(cachedRect.localPosition))
             {
                 Debug.Log($"You swiped left and the defendant is guilty: {isGuilty}");
-                AutoSwipeLeft(_cachedRect.localPosition);
+                AutoSwipeLeft(cachedRect.localPosition);
             }
             // Not been reached required distance -> Return to default position
             else
             {
-                StartCoroutine(MoveCoroutine(_cachedRect.localPosition, Vector3.zero));
+                StartCoroutine(MoveCoroutine(cachedRect.localPosition, Vector3.zero));
                 return;
             }
             
@@ -188,7 +189,7 @@ namespace SwipeableView
 
         float GetRequiredDistance(float positionX)
         {
-            return positionX > 0 ? _cachedRect.rect.size.x / 2 : -(_cachedRect.rect.size.x / 2);
+            return positionX > 0 ? cachedRect.rect.size.x / 2 : -(cachedRect.rect.size.x / 2);
         }
 
         float GetCurrentPosition(float positionX)
@@ -210,11 +211,11 @@ namespace SwipeableView
 
                 var rate = 1 - Mathf.Clamp01(diff / _viewData.SwipeDuration);
                 var t = _viewData.CardAnimationCurve.Evaluate(rate);
-                _cachedRect.localPosition = Vector3.Lerp(from, to, t);
+                cachedRect.localPosition = Vector3.Lerp(from, to, t);
                 yield return null;
             }
 
-            _cachedRect.localPosition = to;
+            cachedRect.localPosition = to;
             onComplete?.Invoke();
         }
     }
