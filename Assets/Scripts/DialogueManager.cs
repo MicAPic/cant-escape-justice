@@ -49,9 +49,9 @@ public class DialogueManager : MonoBehaviour
     private bool stopAudioSource;
     
     [Header("Characters")]
-    public Color gavelColor;
-    public Color defendantColor;
-    public Color courtroomColor;
+    public Sprite courtroomSprite;
+    public Sprite defendantSprite;
+    public Sprite gavelSprite;
     
     private bool _isPlaying;
     private bool _isDisplayingRichText;
@@ -174,7 +174,7 @@ public class DialogueManager : MonoBehaviour
             HandleTags(_story.currentTags);
             _displayLineCoroutine = StartCoroutine(DisplayLine(nextLine));
         }
-        else
+        else if (_story.currentChoices.Count == 0)
         {
             _isPlaying = false;
             StartCoroutine(WaitBeforeTransitioning());
