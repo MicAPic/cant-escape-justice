@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using SwipeableView;
@@ -7,7 +5,6 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using System.Text;
-using TMPro.SpriteAssetUtilities;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,7 +23,7 @@ public class GameManager : MonoBehaviour
     public ImageRandomData hairData;
     public ImageRandomData eyeData;
     public ImageRandomData mouthData;
-    public List<Sprite> allFeatures;
+    private List<Sprite> _allFeatures;
 
     public ImageRandomData itemData; 
     
@@ -58,7 +55,7 @@ public class GameManager : MonoBehaviour
             _dialogueManager.StartDialogue();    
         }
 
-        allFeatures = hairData.images.Concat(eyeData.images.Concat(mouthData.images)).ToList();
+        _allFeatures = hairData.images.Concat(eyeData.images.Concat(mouthData.images)).ToList();
     }
     
     private bool curGuilty;
@@ -100,7 +97,7 @@ public class GameManager : MonoBehaviour
                     potato = bodyData.images[Random.Range(0, bodyData.images.Count)],
                     eyes = GenerateFeature(eyeData),
                     mouth = GenerateFeature(mouthData),
-                    // hair = GenerateFeature(hairData),
+                    hair = GenerateFeature(hairData),
                     
                     isGuilty = GenerateGuilt(),
                     charge = GenerateCharge(),
@@ -145,7 +142,7 @@ public class GameManager : MonoBehaviour
 
         return probability > epsilon ? 
             curFeatures[Random.Range(0, curFeatures.Count)] : 
-            allFeatures[Random.Range(0, allFeatures.Count)].name;
+            _allFeatures[Random.Range(0, _allFeatures.Count)].name;
     }
     
     private string GenerateSchedule(bool isGuilty, string timeOfCrime)

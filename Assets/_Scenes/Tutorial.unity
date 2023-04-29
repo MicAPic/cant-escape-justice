@@ -2340,6 +2340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f3b517a46ab43859e5306d88bf23e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  epsilon: 0.7
   charges: {fileID: 11400000, guid: 47e086473a32dd34589882d02bcda9e0, type: 2}
   schedules: {fileID: 11400000, guid: ded2bc5e0b0c8044f89fb85e47a74ba5, type: 2}
   timesOfCrime: {fileID: 11400000, guid: b39436933fb25574da93314f3b2307b1, type: 2}
@@ -2347,6 +2348,7 @@ MonoBehaviour:
   hairData: {fileID: 0}
   eyeData: {fileID: 0}
   mouthData: {fileID: 0}
+  allFeatures: []
   itemData: {fileID: 0}
   raycastBlock: {fileID: 1532197754}
   cases:

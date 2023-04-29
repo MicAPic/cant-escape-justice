@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: HairData
   m_EditorClassIdentifier: 
   images:
-  - {fileID: 427712324, guid: b76a39a13089a443591af6638f450f9d, type: 3}
+  - {fileID: -1954659636, guid: 8cd1b5f17f92a4765a004e633e359c4c, type: 3}
+  - {fileID: -163568958, guid: 8cd1b5f17f92a4765a004e633e359c4c, type: 3}
+  - {fileID: 200605484, guid: 8cd1b5f17f92a4765a004e633e359c4c, type: 3}
+  - {fileID: -1638864769, guid: 8cd1b5f17f92a4765a004e633e359c4c, type: 3}
+  - {fileID: 1311483145, guid: 8cd1b5f17f92a4765a004e633e359c4c, type: 3}
+  - {fileID: -1495458281, guid: 8cd1b5f17f92a4765a004e633e359c4c, type: 3}
+  - {fileID: -1346323565, guid: 8cd1b5f17f92a4765a004e633e359c4c, type: 3}

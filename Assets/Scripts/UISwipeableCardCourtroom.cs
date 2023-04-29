@@ -13,6 +13,8 @@ namespace SwipeableView
         private Image eyes;
         [SerializeField] 
         private Image mouth;
+        [SerializeField] 
+        private Image hair;
         
         [SerializeField]
         private CanvasGroup imgLike;
@@ -26,6 +28,7 @@ namespace SwipeableView
             body.sprite = data.potato;
             eyes.sprite = data.eyes;
             mouth.sprite = data.mouth;
+            hair.sprite = data.hair;
             
             imgLike.alpha = 0;
             imgNope.alpha = 0;
