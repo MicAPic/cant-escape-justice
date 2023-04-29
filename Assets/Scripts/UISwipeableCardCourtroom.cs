@@ -18,11 +18,6 @@ namespace SwipeableView
 
         public override void UpdateContent(DefendantRecord data)
         {
-            isGuilty = data.isGuilty;
-            charge = data.charge;
-            schedule = data.schedule;
-            timeOfCrime = data.timeOfCrime;
-            
             bg.color = data.color;
             
             imgLike.alpha = 0;

@@ -147,7 +147,7 @@ public class DialogueManager : MonoBehaviour
     
     private IEnumerator WaitBeforeDisplayingText()
     {
-        yield return new WaitForSeconds(0.66f);
+        yield return new WaitForSeconds(1.05f);
         ContinueStory();
         _isPlaying = true;
     }
@@ -169,14 +169,15 @@ public class DialogueManager : MonoBehaviour
         else
         {
             _isPlaying = false;
-            // StartCoroutine(WaitBeforeGivingControl());
+            StartCoroutine(WaitBeforeTransitioning());
         }
     }
 
-    // private IEnumerator WaitBeforeGivingControl()
-    // {
-    //     yield return new WaitForSeconds(0.1f);
-    // }
+    private IEnumerator WaitBeforeTransitioning()
+    {
+        yield return new WaitForSeconds(0.1f);
+        UITransitionController.Instance.TransitionAndLoad("MainMenu");
+    }
 
     private IEnumerator DisplayLine(string line)
     {

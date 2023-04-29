@@ -33,7 +33,7 @@ I sentence you to sit in this exact courtroom and solve cases until you repent f
 (Is this really all the punishment?) #speaker:You
 No, it is not. #speaker:Václav
 Hey, who said you can read my thoughts? #speaker:You
-'Tis but one of my powers. #speaker:You
+'Tis but one of my powers. #speaker:Václav
 Let us add some challenge. Do not pass a false verdict. #speaker:Václav
 Not that I ever did. #speaker:You
 Of course, of course. #speaker:Václav
