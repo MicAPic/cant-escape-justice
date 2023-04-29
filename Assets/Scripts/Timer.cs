@@ -71,6 +71,7 @@ public class Timer : MonoBehaviour
             }
             
             //TODO: Add a game over
+            UITransitionController.Instance.TransitionAndLoad("MainMenu");
         }
         
         if (_wasFrozen)

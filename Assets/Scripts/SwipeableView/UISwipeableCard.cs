@@ -160,16 +160,27 @@ namespace SwipeableView
                 {
                     _dialogueManager.SelectChoice(2);
                 }
-                Debug.Log($"You swiped right and the defendant is guilty: {isGuilty}");
+
+                if (isGuilty)
+                {
+                    Debug.Log($"You swiped right and the defendant is guilty: {true}");
+                    //TODO: Add a game over
+                    UITransitionController.Instance.TransitionAndLoad("MainMenu");
+                }
             }
             else if (IsSwipedLeft(cachedRect.localPosition))
             {
-                Debug.Log($"You swiped left and the defendant is guilty: {isGuilty}");
+                AutoSwipeLeft(cachedRect.localPosition);
                 if (_dialogueManager)
                 {
                     _dialogueManager.SelectChoice(1);
                 }
-                AutoSwipeLeft(cachedRect.localPosition);
+                if (!isGuilty)
+                {
+                    Debug.Log($"You swiped left and the defendant is guilty: {false}");
+                    //TODO: Add a game over
+                    UITransitionController.Instance.TransitionAndLoad("MainMenu");
+                }
             }
             // Not been reached required distance -> Return to default position
             else

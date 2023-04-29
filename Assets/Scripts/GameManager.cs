@@ -23,10 +23,10 @@ public class GameManager : MonoBehaviour
     public ImageRandomData hairData;
     public ImageRandomData eyeData;
     public ImageRandomData mouthData;
-    public List<Sprite> allFeatures;
-    public List<Sprite> allItems;
+    private List<Sprite> _allFeatures;
 
-    public ImageRandomData itemData; 
+    public ImageRandomData itemData;
+    private List<Sprite> _allItems;
     
     [Header("UI")]
     public CanvasGroup raycastBlock;
@@ -104,7 +104,6 @@ public class GameManager : MonoBehaviour
                     hair = GenerateFeature(hairData),
                     
                     items = GenerateItemsList(),
-                    
 
                     isGuilty = GenerateGuilt(),
                     charge = GenerateCharge(),
