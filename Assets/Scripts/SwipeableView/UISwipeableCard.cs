@@ -7,11 +7,6 @@ namespace SwipeableView
 {
     public class UISwipeableCard<TData, TContext> : MonoBehaviour, ISwipeable where TContext : class
     {
-        public bool isGuilty;
-        public string charge;
-        public string schedule;
-        public string timeOfCrime;
-
         [SerializeField] SwipeableViewData _viewData = default;
 
         /// <summary>
@@ -34,10 +29,17 @@ namespace SwipeableView
 
         private const float _epsion = 1.192093E-07f;
 
+        private UISwipeableViewCourtroom _swipeableView;
+
         void OnEnable()
         {
             cachedRect = transform as RectTransform;
             _screenSize = Screen.height > Screen.width ? Screen.width : Screen.height;
+        }
+
+        void Start()
+        {
+            _swipeableView = FindObjectOfType<UISwipeableViewCourtroom>();
         }
 
         void Update()
@@ -142,6 +144,7 @@ namespace SwipeableView
         public void EndSwipe()
         {
             var dialogueManager = FindObjectOfType<DialogueManager>();
+            var isGuilty = _swipeableView._data[DataIndex].isGuilty;
             
             // over required distance -> Auto swipe
             if (IsSwipedRight(cachedRect.localPosition))
@@ -149,7 +152,7 @@ namespace SwipeableView
                 AutoSwipeRight(cachedRect.localPosition);
                 if (dialogueManager)
                 {
-                    dialogueManager.SelectChoice(1);
+                    dialogueManager.SelectChoice(2);
                 }
                 Debug.Log($"You swiped right and the defendant is guilty: {isGuilty}");
             }
@@ -158,7 +161,7 @@ namespace SwipeableView
                 Debug.Log($"You swiped left and the defendant is guilty: {isGuilty}");
                 if (dialogueManager)
                 {
-                    dialogueManager.SelectChoice(0);
+                    dialogueManager.SelectChoice(1);
                 }
                 AutoSwipeLeft(cachedRect.localPosition);
             }
@@ -174,18 +177,22 @@ namespace SwipeableView
                 // update the next defendant's record 
                 GameManager.Instance.caseCounters[1].text = $"#{DataIndex + 2}";
                 
-                var nextCase = FindObjectOfType<UISwipeableViewCourtroom>()._data[DataIndex + 1];
-                StringBuilder description = new StringBuilder(100);
+                var nextCase = _swipeableView._data[DataIndex + 1];
+                
+                var description = new StringBuilder(100);
                 description.Append("Defendant is accused of ");
-                description.Append($"{nextCase.charge} at <color=#000>{nextCase.timeOfCrime}</color> using <color=#000>carrot.png</color>.");
+                description.Append($"{nextCase.charge} at <color=#000>{nextCase.timeOfCrime}</color> " +
+                                   $"using <color=#000>carrot.png</color>.\n \n");
+                description.Append($"Distinguishing features: <sprite name=\"{nextCase.feature}\">");
+                    
                 GameManager.Instance.caseDescriptions[1].text = description.ToString();
                 GameManager.Instance.caseSchedules[1].text = nextCase.schedule;
                 
                 Debug.Log($"{nextCase.charge} {nextCase.timeOfCrime} {nextCase.isGuilty}");
             }
-
-            // show it
+            
             GameManager.Instance.SwitchCases();
+            Timer.Instance.Reset();
         }
 
         public void AutoSwipeRight(Vector3 from)

@@ -17,8 +17,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] 
     private RectTransform inputArea;
     [SerializeField] 
-    private CanvasGroup tutorialBlock;
-    [SerializeField] 
     private GameObject timer;
     [SerializeField] 
     private TMP_Text speakerText;
@@ -32,8 +30,11 @@ public class DialogueManager : MonoBehaviour
     private TextAsset inkScript;
     private Story _story;
     private const string SpeakerTag = "speaker";
+    private const string EffectTag = "sfx";
 
     [Header("Audio")] 
+    [SerializeField] 
+    private DialogueAudioInfo effectsAudioInfo;
     [SerializeField] 
     private DialogueAudioInfo defaultAudioInfo;
     [SerializeField] 
@@ -62,7 +63,7 @@ public class DialogueManager : MonoBehaviour
     
     void Awake() 
     {
-        _audioSource = gameObject.AddComponent<AudioSource>();
+        _audioSource = gameObject.GetComponent<AudioSource>();
         InitializeAudioInfoDictionary();
         _currentAudioInfo = defaultAudioInfo;
     }
@@ -103,28 +104,35 @@ public class DialogueManager : MonoBehaviour
         _story.BindExternalFunction("EnableSwiping", () =>
         {
             inputArea.offsetMin = new Vector2(790.0f, inputArea.offsetMin.y);
-            tutorialBlock.blocksRaycasts = true;
+            GameManager.Instance.raycastBlock.blocksRaycasts = true;
             GameManager.Instance.SwitchCases();
+            
+            Timer.Instance.Reset();
+            Timer.Instance.stopTimer = false;
         });
         _story.BindExternalFunction("DisableSwiping", () =>
         {
             inputArea.offsetMin = new Vector2(0.0f, inputArea.offsetMin.y);
-            tutorialBlock.blocksRaycasts = false;
+            GameManager.Instance.raycastBlock.blocksRaycasts = false;
+            
+            Timer.Instance.Reset();
+            Timer.Instance.stopTimer = true;
         });
         _story.BindExternalFunction("ChangeSpeakerCardLeft", () =>
         {
-            var currentCard = tutorialBlock.GetComponentsInChildren<UISwipeableCardCourtroom>()[^1];
+            var currentCard = GameManager.Instance.raycastBlock.GetComponentsInChildren<UISwipeableCardCourtroom>()[^1];
             currentCard.AutoSwipeLeft(currentCard.cachedRect.localPosition);
         });
         _story.BindExternalFunction("ChangeSpeakerCardRight", () =>
         {
-            var currentCard = tutorialBlock.GetComponentsInChildren<UISwipeableCardCourtroom>()[^1];
+            var currentCard = GameManager.Instance.raycastBlock.GetComponentsInChildren<UISwipeableCardCourtroom>()[^1];
             currentCard.AutoSwipeRight(currentCard.cachedRect.localPosition);
         });
         _story.BindExternalFunction("AddTimer", () =>
         {
             Debug.Log("TODO: Add an animation");
             timer.SetActive(true);
+            Timer.Instance.stopTimer = true;
         });
         _story.BindExternalFunction("ScreenShake", () =>
         {
@@ -147,7 +155,7 @@ public class DialogueManager : MonoBehaviour
     
     private IEnumerator WaitBeforeDisplayingText()
     {
-        yield return new WaitForSeconds(0.66f);
+        yield return new WaitForSeconds(1.05f);
         ContinueStory();
         _isPlaying = true;
     }
@@ -169,14 +177,15 @@ public class DialogueManager : MonoBehaviour
         else
         {
             _isPlaying = false;
-            // StartCoroutine(WaitBeforeGivingControl());
+            StartCoroutine(WaitBeforeTransitioning());
         }
     }
 
-    // private IEnumerator WaitBeforeGivingControl()
-    // {
-    //     yield return new WaitForSeconds(0.1f);
-    // }
+    private IEnumerator WaitBeforeTransitioning()
+    {
+        yield return new WaitForSeconds(0.1f);
+        UITransitionController.Instance.TransitionAndLoad("MainMenu");
+    }
 
     private IEnumerator DisplayLine(string line)
     {
@@ -281,6 +290,10 @@ public class DialogueManager : MonoBehaviour
                 case SpeakerTag:
                     speakerText.text = value;
                     SetCurrentAudioInfo(value);
+                    break;
+                case EffectTag:
+                    var effectIndex = int.Parse(value);
+                    _audioSource.PlayOneShot(effectsAudioInfo.typingAudioClips[effectIndex]);
                     break;
                 default:
                     Debug.LogWarning("Given tag is not implemented:" + key);

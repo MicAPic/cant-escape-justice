@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99133599b1f44be479a109e99dcbe9cc, type: 3}
   m_Name: MouthData
   m_EditorClassIdentifier: 
-  images: []
+  images:
+  - {fileID: -1643763009, guid: 90dc42ba0a6da4632875d1dadd72c0b9, type: 3}
+  - {fileID: 300839681, guid: 90dc42ba0a6da4632875d1dadd72c0b9, type: 3}
+  - {fileID: -382300286, guid: 90dc42ba0a6da4632875d1dadd72c0b9, type: 3}
+  - {fileID: -1832923352, guid: 90dc42ba0a6da4632875d1dadd72c0b9, type: 3}

@@ -1,21 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefendantRecord /*: MonoBehaviour*/
+public class DefendantRecord
 {
-    public Color color;
-
     public bool isGuilty;
-    //Обвинение
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public string charge;
     public string timeOfCrime;
     public Sprite weapon;
+    public string feature;
 
-    //Улики
+    //пїЅпїЅпїЅпїЅпїЅ
     public string schedule;
     public List<Sprite> items;
-    //Лицо
+    //пїЅпїЅпїЅпїЅ
+    public Sprite potato;
     public Sprite hair;
-    public Sprite eye;
+    public Sprite eyes;
     public Sprite mouth;
 }

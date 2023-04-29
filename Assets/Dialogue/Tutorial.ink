@@ -13,7 +13,7 @@ Bailiff! Take him away immediately unless he wishes to face charges of court mis
 But I didn’t do it! #speaker:Gorg
 ~ ChangeSpeakerCardLeft()
 The court is now adjourned. #speaker:You
-… #speaker: 
+… #speaker: #sfx:0
 Gosh, I hope the prosecution gets me a fat paycheck for all the extra work they put me through… #speaker:You
 ~ ChangeSpeakerCardRight()
 Are you not ashamed of yourself? #speaker:???
@@ -27,13 +27,13 @@ I have come to stop your corrupt ways!
 By doing what, exactly? Speaking in a funny voice? #speaker:You
 Silence! #speaker:Václav
 ~ ScreenShake()
-… #speaker: 
+… #speaker: #sfx:1
 Eek! #speaker:You
 I sentence you to sit in this exact courtroom and solve cases until you repent from the bottom of your heart! #speaker:Václav
 (Is this really all the punishment?) #speaker:You
 No, it is not. #speaker:Václav
 Hey, who said you can read my thoughts? #speaker:You
-'Tis but one of my powers. #speaker:You
+'Tis but one of my powers. #speaker:Václav
 Let us add some challenge. Do not pass a false verdict. #speaker:Václav
 Not that I ever did. #speaker:You
 Of course, of course. #speaker:Václav
@@ -48,6 +48,12 @@ Analyze their case properly and then swipe their profile <b>left</b> or <b>right
 === choice ===
 ~ ChangeSpeakerCardRight()
 ~ EnableSwiping()
+    + [timeout]
+        ~ DisableSwiping()
+        Are you going to sit here all day and do nothing? #speaker:Václav
+        I have a whole country's worth of corrupt judges like you.
+        Let us do this again from the start. 
+        -> choice
     + [left]
         ~ DisableSwiping()
         Are you sure you made the right choice? #speaker:Václav
@@ -56,7 +62,7 @@ Analyze their case properly and then swipe their profile <b>left</b> or <b>right
     + [right]
         ~ DisableSwiping()
         At last! #speaker:Václav
--> finale
+        -> finale
 
 === finale ===
 See? Doesn't it feel good to pass a proper verdict? #speaker:Václav

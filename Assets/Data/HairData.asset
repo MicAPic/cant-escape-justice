@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HairData
   m_EditorClassIdentifier: 
   images:
-  - {fileID: 0}
+  - {fileID: 427712324, guid: b76a39a13089a443591af6638f450f9d, type: 3}
