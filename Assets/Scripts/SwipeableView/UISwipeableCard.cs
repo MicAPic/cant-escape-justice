@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using System.Text;
 
 namespace SwipeableView
 {
@@ -174,7 +175,10 @@ namespace SwipeableView
                 GameManager.Instance.caseCounters[1].text = $"#{DataIndex + 2}";
                 
                 var nextCase = FindObjectOfType<UISwipeableViewCourtroom>()._data[DataIndex + 1];
-                GameManager.Instance.caseDescriptions[1].text = nextCase.charge;
+                StringBuilder description = new StringBuilder(100);
+                description.Append("Defendant is accused of ");
+                description.Append($"{nextCase.charge} at <color=#000>{nextCase.timeOfCrime}</color> using <color=#000>carrot.png</color>.");
+                GameManager.Instance.caseDescriptions[1].text = description.ToString();
                 GameManager.Instance.caseSchedules[1].text = nextCase.schedule;
                 
                 Debug.Log($"{nextCase.charge} {nextCase.timeOfCrime} {nextCase.isGuilty}");

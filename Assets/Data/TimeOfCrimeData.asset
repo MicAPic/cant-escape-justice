@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TimeOfCrimeData
   m_EditorClassIdentifier: 
   strings:
-  - 8:15
-  - 9:55
+  - 08:15
+  - 09:55
   - 10:20
   - 11:47
   - 12:33
