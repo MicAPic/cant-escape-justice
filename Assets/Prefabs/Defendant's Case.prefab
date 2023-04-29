@@ -934,7 +934,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "17:30\u201318:00 <indent=55%>Watched GMTK.</indent>\n10:00\u201314:00
+  m_text: "08:00\u201310:00 <indent=55%>Watched GMTK.</indent>\n10:00\u201314:00
     <indent=55%>Watched GMTK.</indent>\n14:00\u201318:00 <indent=55%>Played on a
     banjo.</indent>\n"
   m_isRightToLeft: 0

@@ -40,6 +40,7 @@ namespace SwipeableView
         void Start()
         {
             _swipeableView = FindObjectOfType<UISwipeableViewCourtroom>();
+            PopulateCase(0, 0);
         }
 
         void Update()
@@ -175,20 +176,7 @@ namespace SwipeableView
             if (!dialogueManager)
             {
                 // update the next defendant's record 
-                GameManager.Instance.caseCounters[1].text = $"#{DataIndex + 2}";
-                
-                var nextCase = _swipeableView._data[DataIndex + 1];
-                
-                var description = new StringBuilder(100);
-                description.Append("Defendant is accused of ");
-                description.Append($"{nextCase.charge} at <color=#000>{nextCase.timeOfCrime}</color> " +
-                                   $"using <color=#000>carrot.png</color>.\n \n");
-                description.Append($"Distinguishing features: <sprite name=\"{nextCase.feature}\">");
-                    
-                GameManager.Instance.caseDescriptions[1].text = description.ToString();
-                GameManager.Instance.caseSchedules[1].text = nextCase.schedule;
-                
-                Debug.Log($"{nextCase.charge} {nextCase.timeOfCrime} {nextCase.isGuilty}");
+                PopulateCase(DataIndex + 1);
             }
             
             GameManager.Instance.SwitchCases();
@@ -207,6 +195,24 @@ namespace SwipeableView
             var vec = from != Vector3.zero ? (from - Vector3.zero).normalized : Vector3.left;
             var to = vec * _screenSize;
             StartCoroutine(MoveCoroutine(from, to, () => ActionSwipedLeft?.Invoke(this)));
+        }
+
+        private void PopulateCase(int dataIndex, int caseIndex=1)
+        {
+            GameManager.Instance.caseCounters[1].text = $"#{dataIndex + 1}";
+                
+            var nextCase = _swipeableView._data[dataIndex];
+                
+            var description = new StringBuilder(100);
+            description.Append("Defendant is accused of ");
+            description.Append($"{nextCase.charge} at <color=#000>{nextCase.timeOfCrime}</color> " +
+                               $"using <color=#000>carrot.png</color>.\n \n");
+            description.Append($"Distinguishing features: <sprite name=\"{nextCase.feature}\">");
+                    
+            GameManager.Instance.caseDescriptions[caseIndex].text = description.ToString();
+            GameManager.Instance.caseSchedules[caseIndex].text = nextCase.schedule;
+                
+            Debug.Log($"{nextCase.charge} {nextCase.timeOfCrime} {nextCase.isGuilty}");
         }
 #endregion
 
