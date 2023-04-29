@@ -160,11 +160,13 @@ namespace SwipeableView
             
             // update hidden defendant's record 
             GameManager.Instance.caseCounters[1].text = $"#{DataIndex + 2}";
-            GameManager.Instance.caseDescriptions[1].text = charge;
-            GameManager.Instance.caseSchedules[1].text = schedule; 
+            var nextCase = FindObjectOfType<UISwipeableViewCourtroom>()._data[DataIndex + 1];
+            GameManager.Instance.caseDescriptions[1].text = nextCase.charge;
+            GameManager.Instance.caseSchedules[1].text = nextCase.schedule;
+
             // show it
             GameManager.Instance.SwitchCases();
-            Debug.Log($"{timeOfCrime} {isGuilty}");
+            Debug.Log($"{nextCase.charge} {nextCase.timeOfCrime} {nextCase.isGuilty}");
         }
 
         public void AutoSwipeRight(Vector3 from)

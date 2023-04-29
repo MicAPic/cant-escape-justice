@@ -23,7 +23,7 @@ namespace SwipeableView
 
         protected TContext Context { get; }
 
-        List<TData> _data = new List<TData>();
+        public List<TData> _data = new();
 
         readonly List<UISwipeableCard<TData, TContext>> _cards = new List<UISwipeableCard<TData, TContext>>(_maxCreateCardCount);
         const int _maxCreateCardCount = 2;
