@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 222971740241207670}
   - component: {fileID: 114796786965731516}
   - component: {fileID: 225710375937698836}
+  - component: {fileID: 2480644356391049080}
   m_Layer: 5
   m_Name: Like
   m_TagString: Untagged
@@ -187,6 +188,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2480644356391049080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627732049256030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0848bff101191904ead4bb831f7084db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BlurFactor: 1
+  m_Style: 2
+  m_EffectColor: {r: 0.54901963, g: 0.7294118, b: 0.37647063, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1841833420315068
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +217,7 @@ GameObject:
   - component: {fileID: 222334516503608294}
   - component: {fileID: 114249326953185096}
   - component: {fileID: 225590851287308486}
+  - component: {fileID: 708797160175185485}
   m_Layer: 5
   m_Name: Nope
   m_TagString: Untagged
@@ -276,6 +295,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &708797160175185485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841833420315068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0848bff101191904ead4bb831f7084db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BlurFactor: 1
+  m_Style: 2
+  m_EffectColor: {r: 0.7294118, g: 0.39607847, b: 0.37647063, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1903154248421992
 GameObject:
   m_ObjectHideFlags: 0

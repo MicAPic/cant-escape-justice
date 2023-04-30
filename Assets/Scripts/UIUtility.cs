@@ -11,6 +11,10 @@ public class UIUtility : MonoBehaviour
     [SerializeField] 
     private RectTransform menuGroupRect;
     [SerializeField] 
+    private CanvasGroup clickInfoGroup;
+    [SerializeField] 
+    private float hideDuration;
+    [SerializeField] 
     private float settingsTransitionDuration;
     [SerializeField] 
     private Slider musicSlider;
@@ -53,6 +57,11 @@ public class UIUtility : MonoBehaviour
     {
         var sfxPlayer = GameObject.Find("SFXPlayer").GetComponent<AudioSource>();
         sfxPlayer.PlayOneShot(sfxSound);
+    }
+
+    public void HideInfoGroup()
+    {
+        clickInfoGroup.DOFade(0.0f, hideDuration);
     }
     
     public void QuitGame()
