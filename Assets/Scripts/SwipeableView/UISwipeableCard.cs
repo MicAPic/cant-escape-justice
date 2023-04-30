@@ -165,6 +165,7 @@ namespace SwipeableView
                 {
                     Debug.Log($"You swiped right and the defendant is guilty: {true}");
                     GameManager.Instance.GameOver();
+                    return;
                 }
             }
             else if (IsSwipedLeft(cachedRect.localPosition))
@@ -178,6 +179,7 @@ namespace SwipeableView
                 {
                     Debug.Log($"You swiped left and the defendant is guilty: {false}");
                     GameManager.Instance.GameOver();
+                    return;
                 }
             }
             // Not been reached required distance -> Return to default position
