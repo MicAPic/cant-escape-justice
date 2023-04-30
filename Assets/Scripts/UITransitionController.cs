@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Audio;
 using Coffee.UIEffects;
 using DG.Tweening;
 using UnityEngine;
@@ -9,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class UITransitionController : MonoBehaviour
 {
     public static UITransitionController Instance;
+    [SerializeField] 
+    private AudioPlayer musicPlayer;
     [SerializeField] 
     private float duration = 1.0f;
     private UITransitionEffect _transitionEffect;
@@ -36,6 +36,8 @@ public class UITransitionController : MonoBehaviour
 
     public void TransitionAndLoad(string sceneName)
     {
+        musicPlayer.FadeOut();
+        
         DOTween.To(
             () => _transitionEffect.effectFactor, 
             x => _transitionEffect.effectFactor = x, 

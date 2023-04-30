@@ -75,8 +75,8 @@ public class GameManager : MonoBehaviour
     private bool curGuilty;
     private string curTimeOfCrime;
 
-    public List<string> curFeatures;
-    public List<string> curItems;
+    private List<string> _curFeatures;
+    private List<string> _curItems;
     // Start is called before the first frame update
     void Start()
     {
@@ -144,24 +144,24 @@ public class GameManager : MonoBehaviour
     
     private Sprite GenerateBody()
     {
-        curFeatures = new List<string>();
+        _curFeatures = new List<string>();
         return bodyData.images[Random.Range(0, bodyData.images.Count)];
     }
     private Sprite GenerateFeature(ImageRandomData featureData)
     {
         var feature = featureData.images[Random.Range(0, featureData.images.Count)]; 
-        curFeatures.Add(feature.name);
+        _curFeatures.Add(feature.name);
         return feature;
     }
     private List<Sprite> GenerateItemsList()
     {
-        curItems = new List<string>();
+        _curItems = new List<string>();
         List<Sprite> res = new List<Sprite>();
         for(int i = 0; i < 5; ++i)
         {
             var item = itemData.images[Random.Range(0, itemData.images.Count)];
             res.Add(item);
-            curItems.Add(item.name);
+            _curItems.Add(item.name);
         }
         return res;
     }
@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour
         var probability = curGuilty ? 1.0f : Random.value;
 
         return probability > epsilon ? 
-            curFeatures[Random.Range(0, curFeatures.Count)] : 
+            _curFeatures[Random.Range(0, _curFeatures.Count)] : 
             _allFeatures[Random.Range(0, _allFeatures.Count)].name;
     }
     private string GenerateIncriminatingItems()
@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour
         var probability = curGuilty ? 1.0f : Random.value;
 
         return probability > epsilon ?
-            curItems[Random.Range(0, curItems.Count)] :
+            _curItems[Random.Range(0, _curItems.Count)] :
             itemData.images[Random.Range(0, itemData.images.Count)].name;
     }
 

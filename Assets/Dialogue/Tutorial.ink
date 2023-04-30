@@ -8,9 +8,9 @@ EXTERNAL ScreenShake()
 ->tutorial
 
 === tutorial ===
-No! I'm innocent, I tell you! #speaker:Gorg
+No! I'm innocent, I tell you! #speaker:Himbo
 Bailiff! Take him away immediately unless he wishes to face charges of court misconduct. #speaker:You
-But I didn’t do it! #speaker:Gorg
+But I didn’t do it! #speaker:Himbo
 ~ ChangeSpeakerCardLeft()
 The court is now adjourned. #speaker:You
 … #speaker: #sfx:0
