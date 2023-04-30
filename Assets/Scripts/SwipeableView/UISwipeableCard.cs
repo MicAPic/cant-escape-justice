@@ -42,11 +42,18 @@ namespace SwipeableView
         {
             _swipeableView = FindObjectOfType<UISwipeableViewCourtroom>();
             _dialogueManager = FindObjectOfType<DialogueManager>();
+
+            if (_dialogueManager || _swipeableView.alreadyInitialized) return;
             
-            if (!_dialogueManager)
-            {
-                PopulateCase(0, 0);
-            }
+            _swipeableView.alreadyInitialized = true;
+            PopulateCase(0, 0);
+            StartCoroutine(WaitAndPlaySfx());
+        }
+
+        private IEnumerator WaitAndPlaySfx()
+        {
+            yield return new WaitForSeconds(1.0f);
+            GameManager.Instance.PlayGibberish();
         }
 
         void Update()
@@ -193,6 +200,7 @@ namespace SwipeableView
             {
                 // update the next defendant's record 
                 PopulateCase(DataIndex + 1);
+                GameManager.Instance.PlayGibberish();
             }
             
             GameManager.Instance.SwitchCases();

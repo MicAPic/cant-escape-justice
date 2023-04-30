@@ -1,3 +1,4 @@
+using Audio;
 using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.UI;
 
 public class UIUtility : MonoBehaviour
 {
+    public bool isMainMenu;
+    
     [SerializeField] 
     private RectTransform menuGroupRect;
     [SerializeField] 
@@ -13,11 +16,15 @@ public class UIUtility : MonoBehaviour
     private Slider musicSlider;
     [SerializeField] 
     private Slider sfxSlider;
+    [SerializeField] 
+    private AudioClip sfxSound;
     private float _defaultPosX;
     
     // // Start is called before the first frame update
     void Start()
     {
+        if (!isMainMenu) return;
+        
         _defaultPosX = menuGroupRect.anchoredPosition.x;
         musicSlider.value = SettingsManager.Instance.musicVolume;
         sfxSlider.value = SettingsManager.Instance.sfxVolume;
@@ -40,6 +47,12 @@ public class UIUtility : MonoBehaviour
         {
             menuGroupRect.DOAnchorPosX(_defaultPosX, settingsTransitionDuration);
         }
+    }
+
+    public void PlaySfx()
+    {
+        var sfxPlayer = GameObject.Find("SFXPlayer").GetComponent<AudioSource>();
+        sfxPlayer.PlayOneShot(sfxSound);
     }
     
     public void QuitGame()

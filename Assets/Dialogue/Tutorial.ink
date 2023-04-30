@@ -28,9 +28,9 @@ By doing what, exactly? Speaking in a funny voice? #speaker:You
 Silence! #speaker:Václav
 ~ ScreenShake()
 … #speaker: #sfx:1
-Eek! #speaker:You
+Eek!<br>(He locked me away!) #speaker:You
 I sentence you to sit in this exact courtroom and solve cases until you repent from the bottom of your heart! #speaker:Václav
-(Is this really all the punishment?) #speaker:You
+(Huh. Is this really all the punishment?) #speaker:You
 No, it is not. #speaker:Václav
 Hey, who said you can read my thoughts? #speaker:You
 'Tis but one of my powers. #speaker:Václav
