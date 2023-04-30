@@ -107,6 +107,39 @@ MonoBehaviour:
   gameTime: 5
   cooldown: 0.5
   stopTimer: 0
+  animCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 30
+      inSlope: 0.0032706475
+      outSlope: -0.0031272178
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.8349177
+    - serializedVersion: 3
+      time: 8
+      value: 10
+      inSlope: -2.9960556
+      outSlope: -0.10330466
+      tangentMode: 1
+      weightedMode: 2
+      inWeight: 0.33333334
+      outWeight: 0.5875808
+    - serializedVersion: 3
+      time: 100
+      value: 5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2962141408039260469
 GameObject:
   m_ObjectHideFlags: 0

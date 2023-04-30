@@ -164,8 +164,7 @@ namespace SwipeableView
                 if (isGuilty && !_dialogueManager)
                 {
                     Debug.Log($"You swiped right and the defendant is guilty: {true}");
-                    //TODO: Add a game over
-                    UITransitionController.Instance.TransitionAndLoad("MainMenu");
+                    GameManager.Instance.GameOver();
                 }
             }
             else if (IsSwipedLeft(cachedRect.localPosition))
@@ -178,8 +177,7 @@ namespace SwipeableView
                 if (!isGuilty && !_dialogueManager)
                 {
                     Debug.Log($"You swiped left and the defendant is guilty: {false}");
-                    //TODO: Add a game over
-                    UITransitionController.Instance.TransitionAndLoad("MainMenu");
+                    GameManager.Instance.GameOver();
                 }
             }
             // Not been reached required distance -> Return to default position

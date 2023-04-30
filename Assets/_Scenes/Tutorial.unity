@@ -1098,7 +1098,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1532197753}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -1579,7 +1579,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 190444622}
-  - {fileID: 1494655044}
   - {fileID: 1532197753}
   - {fileID: 1388636221}
   - {fileID: 75944562}
@@ -1777,7 +1776,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1142082096}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1917,9 +1916,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1494655044}
   - {fileID: 676153523}
   m_Father: {fileID: 1142082096}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2078,15 +2078,63 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1142082096}
+    m_TransformParent: {fileID: 1532197753}
     m_Modifications:
     - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
       propertyPath: gameTime
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
       propertyPath: stopTimer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
+      propertyPath: animCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
+      propertyPath: animCurve.m_Curve.Array.data[1].time
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
+      propertyPath: animCurve.m_Curve.Array.data[1].value
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
+      propertyPath: animCurve.m_Curve.Array.data[2].value
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
+      propertyPath: animCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
+      propertyPath: animCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
+      propertyPath: animCurve.m_Curve.Array.data[1].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
+      propertyPath: animCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
+      propertyPath: animCurve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
+      propertyPath: animCurve.m_Curve.Array.data[0].tangentMode
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
+      propertyPath: animCurve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962141407668504476, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
+      propertyPath: animCurve.m_Curve.Array.data[1].weightedMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2962141407668504478, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
       propertyPath: m_Pivot.x
@@ -2098,7 +2146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2962141407668504478, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2962141407668504478, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2166,11 +2214,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2962141407668504478, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 120.000046
+      value: 20.000053
       objectReference: {fileID: 0}
     - target: {fileID: 2962141407668504478, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -428.70477
+      value: -458.70477
       objectReference: {fileID: 0}
     - target: {fileID: 2962141407668504478, guid: cc9857789519c4f9aa7f15d869f8f25e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2340,6 +2388,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f3b517a46ab43859e5306d88bf23e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  caseSlidePivot: {x: 500, y: 0}
+  caseSlideAngle: 45
+  swipeableViewSlidePivot: {x: 0, y: 0}
+  swipeableViewSlideAngle: 0
+  swipeableViewSlideDuration: 1
   epsilon: 0.7
   charges: {fileID: 11400000, guid: 47e086473a32dd34589882d02bcda9e0, type: 2}
   schedules: {fileID: 11400000, guid: ded2bc5e0b0c8044f89fb85e47a74ba5, type: 2}
@@ -2363,6 +2416,8 @@ MonoBehaviour:
   - {fileID: 339853374}
   - {fileID: 339853374}
   swipeableView: {fileID: 676153524}
+  curFeatures: []
+  curItems: []
 --- !u!4 &1850288516
 Transform:
   m_ObjectHideFlags: 0

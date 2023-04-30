@@ -12,7 +12,8 @@ public class Timer : MonoBehaviour
     public float gameTime = 5.0f;
     public float cooldown = 1.0f;
     public bool stopTimer;
-    private Slider timerSlider;
+    
+    private Slider _timerSlider;
     // [SerializeField]
     // private TMP_Text timerText;
     private float _spendTime;
@@ -20,7 +21,7 @@ public class Timer : MonoBehaviour
     private DialogueManager _dialogueManager;
 
     public AnimationCurve animCurve;
-    private int currentCard;
+    private int _currentCard;
 
     void Awake()
     {
@@ -31,17 +32,18 @@ public class Timer : MonoBehaviour
         }
 
         Instance = this;
-        timerSlider = GetComponent<Slider>();
+        _timerSlider = GetComponent<Slider>();
         _dialogueManager = FindObjectOfType<DialogueManager>();
     }
     
     // Start is called before the first frame update
     void Start()
     {
-        timerSlider.maxValue = gameTime;
-        timerSlider.value = gameTime;
+        gameTime = animCurve.Evaluate(_currentCard);
+        _timerSlider.maxValue = gameTime;
+        _timerSlider.value = gameTime;
         // timerText.text = $"00:{gameTime:00}";
-        currentCard = 0;
+        _currentCard = 0;
         StartCoroutine(FreezeForAMomentAndUpdate(2.0f));
     }
 
@@ -74,15 +76,14 @@ public class Timer : MonoBehaviour
                 return;
             }
             
-            //TODO: Add a game over
-            UITransitionController.Instance.TransitionAndLoad("MainMenu");
+            GameManager.Instance.GameOver();
         }
         
         if (_wasFrozen)
         {
             _spendTime += Time.deltaTime;
             // timerText.text = textTime;
-            timerSlider.value = time;
+            _timerSlider.value = time;
         }
         // else
         // {
@@ -93,11 +94,11 @@ public class Timer : MonoBehaviour
 
     public void Reset()
     {
-        ++currentCard;
+        ++_currentCard;
         _spendTime = 0.0f;
-        gameTime = animCurve.Evaluate(currentCard);
-        timerSlider.maxValue = gameTime;
-        timerSlider.value = gameTime;
+        gameTime = animCurve.Evaluate(_currentCard);
+        _timerSlider.maxValue = gameTime;
+        _timerSlider.value = gameTime;
         _wasFrozen = false;
         StartCoroutine(FreezeForAMomentAndUpdate(cooldown));
     }
