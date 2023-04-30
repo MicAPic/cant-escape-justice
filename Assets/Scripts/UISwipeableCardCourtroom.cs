@@ -33,7 +33,7 @@ namespace SwipeableView
             {
                 eyes.color = Color.clear;
                 mouth.color = Color.clear;
-                // hair.color = Color.clear;
+                hair.color = Color.clear;
             }
             
             imgLike.alpha = 0;

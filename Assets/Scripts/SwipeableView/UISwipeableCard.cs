@@ -161,7 +161,7 @@ namespace SwipeableView
                     _dialogueManager.SelectChoice(2);
                 }
 
-                if (isGuilty)
+                if (isGuilty && !_dialogueManager)
                 {
                     Debug.Log($"You swiped right and the defendant is guilty: {true}");
                     //TODO: Add a game over
@@ -175,7 +175,7 @@ namespace SwipeableView
                 {
                     _dialogueManager.SelectChoice(1);
                 }
-                if (!isGuilty)
+                if (!isGuilty && !_dialogueManager)
                 {
                     Debug.Log($"You swiped left and the defendant is guilty: {false}");
                     //TODO: Add a game over
