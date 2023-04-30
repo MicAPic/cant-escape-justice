@@ -18,7 +18,10 @@ public class Timer : MonoBehaviour
     private float _spendTime;
     private bool _wasFrozen;
     private DialogueManager _dialogueManager;
-    
+
+    public AnimationCurve animCurve;
+    private int currentCard;
+
     void Awake()
     {
         if (Instance != null)
@@ -38,6 +41,7 @@ public class Timer : MonoBehaviour
         timerSlider.maxValue = gameTime;
         timerSlider.value = gameTime;
         // timerText.text = $"00:{gameTime:00}";
+        currentCard = 0;
         StartCoroutine(FreezeForAMomentAndUpdate(2.0f));
     }
 
@@ -89,8 +93,11 @@ public class Timer : MonoBehaviour
 
     public void Reset()
     {
+        ++currentCard;
         _spendTime = 0.0f;
-        timerSlider.value = timerSlider.maxValue;
+        gameTime = animCurve.Evaluate(currentCard);
+        timerSlider.maxValue = gameTime;
+        timerSlider.value = gameTime;
         _wasFrozen = false;
         StartCoroutine(FreezeForAMomentAndUpdate(cooldown));
     }
