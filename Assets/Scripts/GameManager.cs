@@ -12,7 +12,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
+    
+    [Header("Audio")] 
+    [SerializeField]
+    private AudioSource sfxPlayer;
+    [SerializeField] 
+    private AudioClip slide;
+    [SerializeField] 
+    private DialogueAudioInfo gibberish;
+    
     [Header("Animation")] 
     [SerializeField]
     private Vector2 caseSlidePivot = new(500, 0); 
@@ -345,6 +353,12 @@ public class GameManager : MonoBehaviour
         return schedules.strings[(int)(Random.value * 100) % schedules.strings.Count];
     }
 
+    public void PlayGibberish()
+    {
+        var clip = gibberish.typingAudioClips[Random.Range(0, gibberish.typingAudioClips.Length)];
+        sfxPlayer.PlayOneShot(clip);
+    }
+
     public void GameOver()
     {
         score.text = $"High score: {SettingsManager.Instance.highScore}";
@@ -367,6 +381,8 @@ public class GameManager : MonoBehaviour
         
         rect.DOShapeCircle(caseSlidePivot, caseSlideAngle, 1.0f)
             .OnComplete(() => ResetCasePos(rect, defaultPos));
+        
+        sfxPlayer.PlayOneShot(slide);
     }
 
     private void ResetCasePos(RectTransform rect, Vector2 defaultPos)

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Default
   typingAudioClips:
-  - {fileID: 8300000, guid: 6fab3fae96e614871b07f3b091d3ea8a, type: 3}
+  - {fileID: 8300000, guid: 065fb2fa263464ef4b914d49305b77cc, type: 3}
   minPitch: 1
   maxPitch: 1

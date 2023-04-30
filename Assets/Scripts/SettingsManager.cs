@@ -14,6 +14,7 @@ public class SettingsManager : MonoBehaviour
 
     public float score
     {
+        get => _score;
         set
         {
             _score = value;

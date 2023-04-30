@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e58732bb962fb4fb0b27e12ddfc921a2, type: 3}
-  m_Name: Sound Effects
+  m_Name: Gibberish
   m_EditorClassIdentifier: 
-  id: Default
+  id: Gibberish
   typingAudioClips:
-  - {fileID: 8300000, guid: 5a2060c094d3845578f6070d12f55a77, type: 3}
-  - {fileID: 8300000, guid: e07f52f7fe37648f2b423da446d25a6e, type: 3}
+  - {fileID: 8300000, guid: 153ff633ba94f4f2086a95cdd1acbdef, type: 3}
+  - {fileID: 8300000, guid: f1355d7be8a45484c8f3798f1f967c83, type: 3}
+  - {fileID: 8300000, guid: 12ccddaf752294d54975b5aa2aa1d27e, type: 3}
   minPitch: 1
   maxPitch: 1
