@@ -2088,6 +2088,7 @@ MonoBehaviour:
   - {fileID: 265156182}
   swipeableView: {fileID: 676153524}
   score: {fileID: 358789106}
+  rank: {fileID: 422627930}
 --- !u!4 &1850288516
 Transform:
   m_ObjectHideFlags: 0

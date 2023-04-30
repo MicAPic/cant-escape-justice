@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
     private UISwipeableViewCourtroom swipeableView;
     [SerializeField] 
     private TMP_Text score;
+    [SerializeField]
+    private TMP_Text rank;
 
     [Header("Dialogue")] 
     private DialogueManager _dialogueManager;
@@ -362,6 +364,25 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         score.text = $"High score: {SettingsManager.Instance.highScore}";
+        switch (SettingsManager.Instance.score)
+        {
+            case <= 5:
+                rank.text = "Rank: Intern";
+                break;
+            case <= 10:
+                rank.text = "Rank: Novice";
+                break;
+            case <= 15:
+                rank.text = "Rank: Righteous";
+                break;
+            case <= 20:
+                rank.text = "Rank: Legendary";
+                break;
+            default:
+                rank.text = "Rank: Themis Jr.<br>(You know you can leave?)";
+                break;
+
+        }
         Timer.Instance.stopTimer = true;
         
         var rect = swipeableView.transform/*.parent*/.GetComponent<RectTransform>();
