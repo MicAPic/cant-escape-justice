@@ -5,13 +5,15 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using System.Text;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [Header("Game Rules")]
-    //
+    [Header("Animation")] 
+    public Vector2 caseSlidePos; 
+    public float caseSlidePower = 1.0f;
     
     [Header("Generator")]
     public float epsilon = 0.7f;
@@ -62,8 +64,8 @@ public class GameManager : MonoBehaviour
     private bool curGuilty;
     private string curTimeOfCrime;
 
-    private List<string> curFeatures = new();
-    private List<string> curItems = new();
+    public List<string> curFeatures;
+    public List<string> curItems;
     // Start is called before the first frame update
     void Start()
     {
@@ -98,7 +100,7 @@ public class GameManager : MonoBehaviour
             data = Enumerable.Range(0, 1000)
                 .Select(_ => new DefendantRecord
                 {
-                    potato = bodyData.images[Random.Range(0, bodyData.images.Count)],
+                    potato = GenerateBody(),
                     eyes = GenerateFeature(eyeData),
                     mouth = GenerateFeature(mouthData),
                     hair = GenerateFeature(hairData),
@@ -120,15 +122,20 @@ public class GameManager : MonoBehaviour
         swipeableView.UpdateData(data);
     }
     
+    private Sprite GenerateBody()
+    {
+        curFeatures = new List<string>();
+        return bodyData.images[Random.Range(0, bodyData.images.Count)];
+    }
     private Sprite GenerateFeature(ImageRandomData featureData)
     {
         var feature = featureData.images[Random.Range(0, featureData.images.Count)]; 
         curFeatures.Add(feature.name);
         return feature;
     }
-
     private List<Sprite> GenerateItemsList()
     {
+        curItems = new List<string>();
         List<Sprite> res = new List<Sprite>();
         for(int i = 0; i < 5; ++i)
         {
@@ -161,7 +168,6 @@ public class GameManager : MonoBehaviour
             curFeatures[Random.Range(0, curFeatures.Count)] : 
             _allFeatures[Random.Range(0, _allFeatures.Count)].name;
     }
-
     private string GenerateIncriminatingItems()
     {
         var probability = curGuilty ? 1.0f : Random.value;
@@ -316,11 +322,23 @@ public class GameManager : MonoBehaviour
 
     public void SwitchCases()
     {
-        cases[0].transform.SetSiblingIndex(0);
         (cases[0], cases[1]) = (cases[1], cases[0]);
         (caseCounters[0], caseCounters[1]) = (caseCounters[1], caseCounters[0]);
         (caseDescriptions[0], caseDescriptions[1]) = (caseDescriptions[1], caseDescriptions[0]);
         (caseSchedules[0], caseSchedules[1]) = (caseSchedules[1], caseSchedules[0]);
+
+        var rect = cases[1].GetComponent<RectTransform>();
+        var defaultPos = rect.anchoredPosition;
+        
+        // rect.DOJumpAnchorPos(caseSlidePos, caseSlidePower, 1, 1.0f)
+        rect.DOShapeCircle(caseSlidePos, caseSlidePower, 1.0f)
+            .OnComplete(() => ResetCasePos(rect, defaultPos));
+    }
+
+    private void ResetCasePos(RectTransform rect, Vector2 defaultPos)
+    {
+        rect.SetSiblingIndex(0);
+        rect.anchoredPosition = defaultPos;
     }
 
     // Update is called once per frame
