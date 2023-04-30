@@ -2415,6 +2415,8 @@ MonoBehaviour:
   caseDescriptions:
   - {fileID: 339853374}
   - {fileID: 339853374}
+  caseAItems: []
+  caseBItems: []
   swipeableView: {fileID: 676153524}
   curFeatures: []
   curItems: []

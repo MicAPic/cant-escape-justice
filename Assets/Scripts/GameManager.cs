@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
     public float epsilon = 0.7f;
     public StringsRandomData charges;
     public StringsRandomData schedules;
-    public StringsRandomData timesOfCrime;
     
     public ImageRandomData bodyData;
     public ImageRandomData hairData;
@@ -174,7 +173,10 @@ public class GameManager : MonoBehaviour
     }
     private string GenerateTimeOfCrime()
     {
-        curTimeOfCrime = timesOfCrime.strings[(int)(Random.value * 100) % timesOfCrime.strings.Count];
+        int hours = Random.Range(8, 23);
+        int minutes = Random.Range(1, 59);
+        curTimeOfCrime = $"{hours:00}:{minutes:00}";
+
         return curTimeOfCrime;
     }
     private string GenerateCharge()
