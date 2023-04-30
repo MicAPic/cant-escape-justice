@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using CameraShake;
 using Ink.Runtime;
 using SwipeableView;
 using TMPro;
@@ -130,13 +131,12 @@ public class DialogueManager : MonoBehaviour
         });
         _story.BindExternalFunction("AddTimer", () =>
         {
-            Debug.Log("TODO: Add an animation");
             timer.SetActive(true);
             Timer.Instance.stopTimer = true;
         });
         _story.BindExternalFunction("ScreenShake", () =>
         {
-            Debug.Log("TODO: Add a screen shake");
+            CameraShaker.Instance.ShakePresets.Explosion2D();
         });
         //
 
