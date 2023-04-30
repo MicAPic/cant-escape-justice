@@ -225,6 +225,21 @@ namespace SwipeableView
                     
             GameManager.Instance.caseDescriptions[caseIndex].text = description.ToString();
             GameManager.Instance.caseSchedules[caseIndex].text = nextCase.schedule;
+            if (caseIndex == 0)
+            {
+                for(int i = 0; i < 5; ++i)
+                {
+                    GameManager.Instance.caseAItems[i].sprite = nextCase.items[i];
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 5; ++i)
+                {
+                    GameManager.Instance.caseBItems[i].sprite = nextCase.items[i];
+                }
+            }
+
                 
             Debug.Log($"{nextCase.charge} {nextCase.timeOfCrime} {nextCase.isGuilty}");
         }

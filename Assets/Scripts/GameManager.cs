@@ -6,8 +6,8 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using System.Text;
 using DG.Tweening;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     public TMP_Text[] caseCounters;
     public TMP_Text[] caseSchedules;
     public TMP_Text[] caseDescriptions;
+    public Image[] caseAItems;
+    public Image[] caseBItems;
     [SerializeField] 
     private UISwipeableViewCourtroom swipeableView;
 
@@ -353,6 +355,7 @@ public class GameManager : MonoBehaviour
         (caseCounters[0], caseCounters[1]) = (caseCounters[1], caseCounters[0]);
         (caseDescriptions[0], caseDescriptions[1]) = (caseDescriptions[1], caseDescriptions[0]);
         (caseSchedules[0], caseSchedules[1]) = (caseSchedules[1], caseSchedules[0]);
+        (caseAItems, caseBItems) = (caseBItems, caseAItems);
 
         var rect = cases[1].GetComponent<RectTransform>();
         var defaultPos = rect.anchoredPosition;
