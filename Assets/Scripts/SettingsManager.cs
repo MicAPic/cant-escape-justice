@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SettingsManager : MonoBehaviour
@@ -11,11 +12,27 @@ public class SettingsManager : MonoBehaviour
     public float musicVolume;
     public float sfxVolume;
 
+    public float score
+    {
+        set
+        {
+            _score = value;
+            if (value > highScore)
+            {
+                highScore = value;
+            }
+        }
+    }
+    private float _score;
+
+    public float highScore;
+
     private void Awake()
     {
         if (Instance != null)
         {
-            Destroy(Instance.gameObject);
+            Destroy(gameObject);
+            return;
         }
 
         Instance = this;

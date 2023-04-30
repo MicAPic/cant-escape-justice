@@ -765,6 +765,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bf0f88ae70b4ad8a5a54b7f693f15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &685811232
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 20424796478285422, guid: 873a285eee72b44f2a079125a17b1948, type: 3}
+      propertyPath: m_Name
+      value: SettingsManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442587546830702103, guid: 873a285eee72b44f2a079125a17b1948, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442587546830702103, guid: 873a285eee72b44f2a079125a17b1948, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 883.2909
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442587546830702103, guid: 873a285eee72b44f2a079125a17b1948, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 198.51933
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442587546830702103, guid: 873a285eee72b44f2a079125a17b1948, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.4342284
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442587546830702103, guid: 873a285eee72b44f2a079125a17b1948, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442587546830702103, guid: 873a285eee72b44f2a079125a17b1948, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442587546830702103, guid: 873a285eee72b44f2a079125a17b1948, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442587546830702103, guid: 873a285eee72b44f2a079125a17b1948, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442587546830702103, guid: 873a285eee72b44f2a079125a17b1948, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442587546830702103, guid: 873a285eee72b44f2a079125a17b1948, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442587546830702103, guid: 873a285eee72b44f2a079125a17b1948, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 873a285eee72b44f2a079125a17b1948, type: 3}
 --- !u!114 &697760105 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7710171331269320229, guid: e9dc17140a28f4656bd45669bff8efe7, type: 3}
@@ -1804,7 +1861,6 @@ MonoBehaviour:
   epsilon: 0.7
   charges: {fileID: 11400000, guid: 47e086473a32dd34589882d02bcda9e0, type: 2}
   schedules: {fileID: 11400000, guid: ded2bc5e0b0c8044f89fb85e47a74ba5, type: 2}
-  timesOfCrime: {fileID: 11400000, guid: b39436933fb25574da93314f3b2307b1, type: 2}
   bodyData: {fileID: 11400000, guid: eaeb4408894e34078bed1cfd1e2912d3, type: 2}
   hairData: {fileID: 11400000, guid: 95ec000a3762ee548ae86426eb92394e, type: 2}
   eyeData: {fileID: 11400000, guid: 1d1fe131da3b44649a2846c376c14203, type: 2}
@@ -1836,6 +1892,7 @@ MonoBehaviour:
   - {fileID: 567308952}
   - {fileID: 265156182}
   swipeableView: {fileID: 676153524}
+  score: {fileID: 358789106}
 --- !u!4 &1850288516
 Transform:
   m_ObjectHideFlags: 0

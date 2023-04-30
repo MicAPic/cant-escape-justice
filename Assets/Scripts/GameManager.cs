@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
     public Image[] caseBItems;
     [SerializeField] 
     private UISwipeableViewCourtroom swipeableView;
+    [SerializeField] 
+    private TMP_Text score;
 
     [Header("Dialogue")] 
     private DialogueManager _dialogueManager;
@@ -345,6 +347,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        score.text = $"High score: {SettingsManager.Instance.highScore}";
         Timer.Instance.stopTimer = true;
         
         var rect = swipeableView.transform/*.parent*/.GetComponent<RectTransform>();

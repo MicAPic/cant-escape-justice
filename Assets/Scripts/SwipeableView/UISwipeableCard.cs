@@ -242,7 +242,7 @@ namespace SwipeableView
                 }
             }
 
-                
+            SettingsManager.Instance.score = dataIndex;
             Debug.Log($"{nextCase.charge} {nextCase.timeOfCrime} {nextCase.isGuilty}");
         }
 #endregion
