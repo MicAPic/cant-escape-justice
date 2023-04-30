@@ -232,8 +232,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Himbo
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 313e83e0069df45c28abd1c8dd41f96a, type: 2}
+  m_sharedMaterial: {fileID: -8028794074502446626, guid: 313e83e0069df45c28abd1c8dd41f96a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 4
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1067,8 +1067,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13.3064, y: 15.3426}
-  m_SizeDelta: {x: -36.6127, y: -30.6852}
+  m_AnchoredPosition: {x: -8.169, y: 14.829}
+  m_SizeDelta: {x: -46.888, y: -29.658}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7710171331572832384
 CanvasRenderer:
@@ -1101,15 +1101,15 @@ MonoBehaviour:
   m_text: "09:00\u201310:00 <indent=55%>Solved a puzzle</indent>\n13:00\u201315:00
     <indent=55%>Stroked a cat</indent>\n19:00\u201321:00 <indent=55%>Visited granny</indent>\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 589f98a0c76334843ae770085f5db2a3, type: 2}
+  m_sharedMaterial: {fileID: -1188417124781734645, guid: 589f98a0c76334843ae770085f5db2a3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4282861383
+  m_fontColor: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1126,21 +1126,21 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -2
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 15
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
@@ -1286,8 +1286,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -182.118, y: 192.5}
-  m_SizeDelta: {x: 561.763, y: 385}
+  m_AnchoredPosition: {x: -165.494, y: 192.5}
+  m_SizeDelta: {x: 595.01, y: 385}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7710171331870109464
 CanvasRenderer:
@@ -1317,14 +1317,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Defendant is accused of being too handsome at <color=#000>14:53</color>
-    using<color=#000> sunglasses</color>.
+  m_text: 'Defendant is accused of being too handsome at <br><color=#0E0E0E>14:53</color>
+    using<color=#0E0E0E> sunglasses</color>.
 
 
-    Distinguishing feature: <sprite name="eyes_4">'
+    Distinguishing feature: <sprite
+    name="eyes_4">'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 589f98a0c76334843ae770085f5db2a3, type: 2}
+  m_sharedMaterial: {fileID: -1188417124781734645, guid: 589f98a0c76334843ae770085f5db2a3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

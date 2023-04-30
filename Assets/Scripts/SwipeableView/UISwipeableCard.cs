@@ -223,14 +223,14 @@ namespace SwipeableView
 
         private void PopulateCase(int dataIndex, int caseIndex=1)
         {
-            GameManager.Instance.caseCounters[1].text = $"#{dataIndex + 1}";
+            GameManager.Instance.caseCounters[caseIndex].text = $"#{dataIndex + 1}";
                 
             var nextCase = _swipeableView._data[dataIndex];
                 
             var description = new StringBuilder(100);
             description.Append("Defendant is accused of ");
-            description.Append($"{nextCase.charge} at <color=#000>{nextCase.timeOfCrime}</color> " +
-                               $"using <color=#000>{nextCase.weapon}</color>.\n \n");
+            description.Append($"{nextCase.charge} at <color=#0E0E0E>{nextCase.timeOfCrime}</color> " +
+                               $"using <color=#0E0E0E>{nextCase.weapon}</color>.\n \n");
             description.Append($"Distinguishing features: <sprite name=\"{nextCase.feature}\">");
                     
             GameManager.Instance.caseDescriptions[caseIndex].text = description.ToString();
