@@ -307,7 +307,7 @@ MonoBehaviour:
   stopAudioSource: 0
   courtroomSprite: {fileID: -1696095158, guid: 24db348254e34431b9933d5b25086311, type: 3}
   defendantSprite: {fileID: -2045081585, guid: 24db348254e34431b9933d5b25086311, type: 3}
-  gavelSprite: {fileID: -1612223525, guid: 24db348254e34431b9933d5b25086311, type: 3}
+  gavelSprite: {fileID: 21300000, guid: da8096e1d852748de8ca2e00d8c8a218, type: 3}
 --- !u!4 &43307643
 Transform:
   m_ObjectHideFlags: 0
@@ -2415,9 +2415,9 @@ MonoBehaviour:
   caseDescriptions:
   - {fileID: 339853374}
   - {fileID: 339853374}
+  caseAItems: []
+  caseBItems: []
   swipeableView: {fileID: 676153524}
-  curFeatures: []
-  curItems: []
 --- !u!4 &1850288516
 Transform:
   m_ObjectHideFlags: 0
