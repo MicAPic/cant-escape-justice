@@ -7,14 +7,23 @@ using Random = UnityEngine.Random;
 using System.Text;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
     [Header("Animation")] 
-    public Vector2 caseSlidePos; 
-    public float caseSlidePower = 1.0f;
+    [SerializeField]
+    private Vector2 caseSlidePivot = new(500, 0); 
+    [SerializeField] 
+    private float caseSlideAngle = 45f;
+    [SerializeField]
+    private Vector2 swipeableViewSlidePivot;
+    [SerializeField] 
+    private float swipeableViewSlideAngle;
+    [SerializeField] 
+    private float swipeableViewSlideDuration = 1.0f;
     
     [Header("Generator")]
     public float epsilon = 0.7f;
@@ -123,6 +132,15 @@ public class GameManager : MonoBehaviour
         }
 
         swipeableView.UpdateData(data);
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            UITransitionController.Instance.TransitionAndLoad(SceneManager.GetActiveScene().name);
+        }
     }
     
     private Sprite GenerateBody()
@@ -323,6 +341,14 @@ public class GameManager : MonoBehaviour
         return schedules.strings[(int)(Random.value * 100) % schedules.strings.Count];
     }
 
+    public void GameOver()
+    {
+        Timer.Instance.stopTimer = true;
+        
+        var rect = swipeableView.transform/*.parent*/.GetComponent<RectTransform>();
+        rect.DOShapeCircle(swipeableViewSlidePivot, swipeableViewSlideAngle, swipeableViewSlideDuration);
+    }
+
     public void SwitchCases()
     {
         (cases[0], cases[1]) = (cases[1], cases[0]);
@@ -334,8 +360,7 @@ public class GameManager : MonoBehaviour
         var rect = cases[1].GetComponent<RectTransform>();
         var defaultPos = rect.anchoredPosition;
         
-        // rect.DOJumpAnchorPos(caseSlidePos, caseSlidePower, 1, 1.0f)
-        rect.DOShapeCircle(caseSlidePos, caseSlidePower, 1.0f)
+        rect.DOShapeCircle(caseSlidePivot, caseSlideAngle, 1.0f)
             .OnComplete(() => ResetCasePos(rect, defaultPos));
     }
 
@@ -344,10 +369,4 @@ public class GameManager : MonoBehaviour
         rect.SetSiblingIndex(0);
         rect.anchoredPosition = defaultPos;
     }
-
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     
-    // }
 }
