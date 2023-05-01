@@ -21,7 +21,7 @@ You call yourself a judge, yet all you do is take bribes. #speaker:???
 (Wait, what?) #speaker:You
 (First, I have the worst munchies, and now I start seeing things.)
 Uhm… Are you a talking gavel?
-I am not a "talking gavel". My name is Václav, Václav The Gavel. #speaker:Václav
+I am not a "talking gavel". My name is Václav, Václav the Gavel. #speaker:Václav
 Perhaps you know me better as the Spirit of Justice.
 I have come to stop your corrupt ways!
 By doing what, exactly? Speaking in a funny voice? #speaker:You
